@@ -1,0 +1,19 @@
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$conexion = mysqli_connect("127.0.0.1","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion,"utf8");
+if(!$conexion){
+    echo "No se ha podido conectar" . mysqli_error();
+    exit();
+}
+$id_coti = $_POST["id_coti"];
+$cant = $_POST["cant"];
+$repuesto = $_POST["repuesto"];
+$valor_un = $_POST["valor_un"];
+$valor_tot = $_POST["valor_tot"];
+$consulta = mysqli_query($conexion,"Call Ingresar_Cotizacion_Repuesto ('$id_coti','$cant','$repuesto','$valor_un','$valor_tot')");
+if(!$consulta){
+    echo "Error al insertar los datos ". mysqli_error();
+}else{
+}
+?>

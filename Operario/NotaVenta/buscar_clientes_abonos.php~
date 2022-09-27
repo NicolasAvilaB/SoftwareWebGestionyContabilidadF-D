@@ -1,0 +1,34 @@
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$conexion = mysqli_connect("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion,"utf8");
+if(!$conexion){
+    echo "No se ha podido conectar" . mysqli_error();
+    exit();
+}
+$id_cliente = $_POST["id_cliente"];
+$consulta = mysqli_query($conexion,"Call Buscar_Clientes_Abonos ('$id_cliente')");
+if(!$consulta){
+    echo "Error al cargar los datos ". mysqli_error();
+}else{
+    if($row = mysqli_fetch_array($consulta)){
+        echo "&nbsp;&nbsp;&nbsp;&nbsp;<label id='id_l' for='id' style='font-weight:bold;'>ID: </label>
+            <label id='id'>&nbsp;".$id_cliente."</label>
+        <p></p>
+            &nbsp;&nbsp;&nbsp;&nbsp;<label id='nombre_l' for='nombre' style='font-weight:bold;'>Nombre: </label>
+            <label id='nombre'>&nbsp;".$row[0]."</label>
+        <p></p>
+            &nbsp;&nbsp;&nbsp;&nbsp;<label id='direccion_l' for='direccion' style='font-weight:bold;'>Dirección: </label>
+            <label id='direccion'>&nbsp;".$row[1]."</label>
+        <p></p>
+            &nbsp;&nbsp;&nbsp;&nbsp;<label id='telefono_l' for='telefono' style='font-weight:bold;'>Teléfono: </label>
+            <label id='telefono'>&nbsp;".$row[2]."</label>
+        <p></p>
+            &nbsp;&nbsp;&nbsp;&nbsp;<label id='comuna_l' for='comuna' style='font-weight:bold;'>Comuna: </label>
+            <label id='comuna'>&nbsp;".$row[3]."</label>
+        <p></p>
+            &nbsp;&nbsp;&nbsp;&nbsp;<label id='correo_l' for='correo' style='font-weight:bold;'>Correo: </label>
+            <label id='correo'>&nbsp;".$row[4]."</label>";
+    }
+}
+?>

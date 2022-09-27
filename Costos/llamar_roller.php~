@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link href="clientes.css" rel="stylesheet" type="text/css">
+<script src="../Imagenes/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<select id="b_rollers">
+    <option value="1" disabled selected>Seleccione Roller...</option>
+    <option value='Agregar Roller'>Agregar Roller</option>
+    <?php
+        $conexion = mysqli_connect("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd") or die ("Error");
+        mysqli_set_charset($conexion,"utf8");
+        $ejecutarx = mysqli_query($conexion,"Select NombreRoller from Rollers Order By NombreRoller ASC");
+    ?>
+    <?php while ($rowx = mysqli_fetch_array($ejecutarx)) {  ?> 
+        <option value='<?php echo $rowx[0];?>'><?php echo $rowx[0];?></option>
+    <?php } ?>
+</select>
+<select id="acci2">
+    <option value="1" disabled selected>Seleccione Accionamiento...</option>
+    <option value='Accionamiento'>Accionamiento</option>
+</select>
+<script>
+$("#b_rollers").change(function(){
+    var estado = $("#b_rollers").val();
+    if (estado=='Agregar Roller'){
+        document.getElementById("boton_agregarfila_lama2").style.display = "block";
+        document.getElementById("input_la2").style.display = "block";
+        document.getElementById("consulta_lama2").style.display = "none";
+        document.getElementById("input_ac2").style.display = "none";
+        document.getElementById("ingresar_lama2").style.display = "block";
+        document.getElementById("result_lama2").style.display = "block";
+        document.getElementById("boton_agregarfila_acciona2").style.display = "none";
+        document.getElementById("pastein2").style.display = "none";
+        document.getElementById("excel_table2").style.display = "none";
+        document.getElementById("accion2").style.display = "none";
+        document.getElementById("guardar_lama2").style.display = "none";
+        document.getElementById("guardar_lamay").style.display = "none";
+        document.getElementById("input_conla2").style.display = "none";
+        //document.getElementById("ingresar_conla2").style.display = "none";
+        $("#acci2").val('1');
+    }else {
+        document.getElementById("consulta_lama2").style.display = "block";
+        document.getElementById("pastein2").value = "";
+        $("#excel_table2").empty();
+        document.getElementById("input_conla2").style.display = "block";
+        //document.getElementById("ingresar_conla2").style.display = "block";
+        document.getElementById("boton_agregarfila_acciona2").style.display = "none";
+        document.getElementById("input_la2").style.display = "none";
+        document.getElementById("input_ac2").style.display = "none";
+        document.getElementById("pastein2").style.display = "block";
+        document.getElementById("excel_table2").style.display = "block";
+        document.getElementById("accion2").style.display = "none";
+        document.getElementById("guardar_lamay").style.display = "none";
+        document.getElementById("boton_agregarfila_lama2").style.display = "none";
+        document.getElementById("ingresar_lama2").style.display = "none";
+        document.getElementById("result_lama2").style.display = "none";
+        $("#acci2").val('1');
+    }
+});
+$("#b_rollers").change(function(){
+    var buscar = $("#b_rollers").val();
+    obtener_datos_consulta_roller(buscar,"");
+});
+
+$("#acci2").change(function(){
+    var estado = $("#acci2").val();
+    if (estado=='Accionamiento'){
+        document.getElementById("consulta_lama2").style.display = "none";
+        document.getElementById("boton_agregarfila_lama2").style.display = "none";
+        document.getElementById("input_la2").style.display = "none";
+        document.getElementById("ingresar_lama2").style.display = "none";
+        document.getElementById("result_lama2").style.display = "none";
+        document.getElementById("boton_agregarfila_acciona2").style.display = "block";
+        document.getElementById("input_ac2").style.display = "block";
+        document.getElementById("result_acciona2").style.display = "block";
+        document.getElementById("pastein2").style.display = "none";
+        document.getElementById("excel_table2").style.display = "none";
+        document.getElementById("accion2").style.display = "block";
+        document.getElementById("guardar_lama2").style.display = "none";
+        document.getElementById("guardar_lamay").style.display = "block";
+        document.getElementById("input_conla2").style.display = "none";
+        //document.getElementById("ingresar_conla2").style.display = "none";
+        $("#b_rollers").val('1');
+    }
+});
+</script>
+</body>
+</html>

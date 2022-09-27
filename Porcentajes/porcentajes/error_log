@@ -1,0 +1,66 @@
+[06-Jul-2021 16:01:45 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 26
+[06-Jul-2021 16:01:45 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 32
+[06-Jul-2021 16:06:55 America/Santiago] PHP Notice:  Undefined index: Producto in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 26
+[06-Jul-2021 16:06:55 America/Santiago] PHP Notice:  Undefined index: Producto in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 32
+[06-Jul-2021 16:06:55 America/Santiago] PHP Notice:  Undefined index: Producto in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 26
+[06-Jul-2021 16:06:55 America/Santiago] PHP Notice:  Undefined index: Producto in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 32
+[06-Jul-2021 16:27:05 America/Santiago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 4
+[06-Jul-2021 16:27:20 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:27:20 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:36:55 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:37:45 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:38:18 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:39:42 America/Santiago] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 28
+[06-Jul-2021 16:43:20 America/Santiago] PHP Warning:  mysqli_error() expects exactly 1 parameter, 0 given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 28
+[06-Jul-2021 16:45:08 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:45:15 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:48:02 America/Santiago] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php:32
+Stack trace:
+#0 {main}
+  thrown in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 32
+[06-Jul-2021 16:48:25 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:49:09 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:49:09 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:50:18 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:51:50 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 16:51:50 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 17:37:46 America/Santiago] PHP Notice:  Undefined variable: consulta in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 17:37:46 America/Santiago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 17:37:46 America/Santiago] PHP Notice:  Undefined variable: consulta in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 17:37:46 America/Santiago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 29
+[06-Jul-2021 18:04:41 America/Santiago] PHP Notice:  Undefined variable: ejecutar2 in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_otros.php on line 54
+[06-Jul-2021 18:04:41 America/Santiago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, null given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_otros.php on line 54
+[06-Jul-2021 18:04:44 America/Santiago] PHP Notice:  Undefined variable: ejecutar2 in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_repuestos.php on line 57
+[06-Jul-2021 18:04:44 America/Santiago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, null given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_repuestos.php on line 57
+[06-Jul-2021 18:04:53 America/Santiago] PHP Notice:  Undefined variable: ejecutar2 in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_otros.php on line 54
+[06-Jul-2021 18:04:53 America/Santiago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, null given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_otros.php on line 54
+[06-Jul-2021 18:06:00 America/Santiago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, string given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_repuestos.php on line 58
+[06-Jul-2021 18:06:03 America/Santiago] PHP Notice:  Undefined variable: ejecutar2 in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_otros.php on line 54
+[06-Jul-2021 18:06:03 America/Santiago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, null given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_otros.php on line 54
+[06-Jul-2021 18:06:39 America/Santiago] PHP Notice:  Undefined variable: ejecutar2 in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_otros.php on line 54
+[06-Jul-2021 18:06:39 America/Santiago] PHP Warning:  mysqli_free_result() expects parameter 1 to be mysqli_result, null given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_otros.php on line 54
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[12-Jul-2021 03:25:35 America/Santiago] PHP Notice:  Undefined index: N_Lama in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_lama.php on line 27
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 12:29:35 America/Santiago] PHP Notice:  Undefined index: NombreRoller in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_accion.php on line 26
+[30-Jul-2021 13:38:34 America/Santiago] PHP Notice:  Undefined variable: nom_producto in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_desc.php on line 10
+[30-Jul-2021 13:39:11 America/Santiago] PHP Notice:  Undefined variable: nom_producto in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_desc.php on line 10
+[30-Jul-2021 13:39:49 America/Santiago] PHP Notice:  Undefined variable: nom_producto in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_desc.php on line 10
+[30-Jul-2021 13:41:55 America/Santiago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Porcentajes/porcentajes/mostrar_porcentaje_desc.php on line 12

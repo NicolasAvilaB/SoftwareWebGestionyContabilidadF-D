@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link href="clientes.css" rel="stylesheet" type="text/css">
+<script src="../Imagenes/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<p></p>
+<br></br>
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$conexion = new mysqli("127.0.0.1","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion,"utf8");
+if(mysqli_connect_errno()){
+    echo mysqli_connect_error();
+}
+$conexion2 = mysqli_connect("127.0.0.1","cso72566_usersocifyd","usersocifyd","cso72566_socifyd") or die ("Error");
+$ejecutar2 = mysqli_query($conexion2,"Call Obtener_Empresas");
+mysqli_set_charset($conexion2,"utf8");
+$texto = $_POST["texto"];
+if($consulta = $conexion->query("Call Buscar_Vendedores ('$texto')")){
+    echo 
+        "<table id='accion3'> 
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Clave</th>
+                    <th>Empresa</th>
+                    <th>Email</th>
+                    <th>Color</th>
+                    <th></th>
+                </tr>
+            </thead>
+        <tbody id='agregar_fila'>
+        ";
+    if ($consulta) {
+        while($row = $consulta->fetch_assoc()){
+            $color = $row["Color"];
+            echo "<tr>
+                    <td id='rut_vendedor' data-id_rut='".$row["Rut"]."'>".$row["Rut"]."</td>
+                    <td id='nombre_vendedor' data-id_nombre='".$row["Rut"]."' contenteditable>".$row["Nombre"]."</td>
+                    <td id='usuario_vendedor' data-id_usuario='".$row["Rut"]."' contenteditable>".$row["Usuario"]."</td>
+                    <td id='clave_vendedor' data-id_clave='".$row["Rut"]."' contenteditable>".$row["Clave"]."</td>
+                    <td id='empresa_vendedor' data-id_empresa='".$row["Rut"]."'><input list='lista_empresas' class='empresa_add' id='empresa_add' name='empresa_add' type='text' style='text-align:center' placeholder='Ingrese y/o Busque Empresas...' size='30' maxlength='105' autocomplete='off' value='".$row["Empresa"]."'/>
+                        <datalist id='lista_empresas'>";
+                        while ($row2 = mysqli_fetch_array($ejecutar2)) {
+                        echo "<option>".$row2[1]."</option>";
+                        }
+                        echo "</datalist></td>
+                    <td id='email_vendedor' data-id_email='".$row["Rut"]."' contenteditable>".$row["Email"]."</td>
+                    <td><input type='color' value='$color'/></td>
+                    <td><button id='eliminar' data-id_eliminar='".$row["Rut"]."'>Eliminar</button></td>
+                </tr>
+            ";
+        }
+    }
+    echo "</tbody></table>";
+    $consulta->close();
+    $conexion->more_results();
+};
+?>
+</body>
+</html>

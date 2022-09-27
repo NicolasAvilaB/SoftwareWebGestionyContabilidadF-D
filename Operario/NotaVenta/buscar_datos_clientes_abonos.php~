@@ -1,0 +1,81 @@
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$conexion = mysqli_connect("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion,"utf8");
+$conexion2122 = mysqli_connect("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion,"utf8");
+$conexion212245 = mysqli_connect("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion,"utf8");
+$conexion2 = new mysqli("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion2,"utf8");
+if(!$conexion){
+    echo "No se ha podido conectar" . mysqli_error();
+    exit();
+}
+$id_cliente = $_POST["id_cliente"];
+$consulta = mysqli_query($conexion,"Call Buscar_Datos_Clientes_Abonos ('$id_cliente')") or die (mysqli_error($conexion));
+if(!$consulta){
+    echo "Error al cargar los datos ". mysqli_error();
+}else{
+    echo "<table id='tabla_detalle_abonos' align='center'>
+            <thead>
+                <tr>
+                    <th>Nota Venta </th>
+                    <th>Valor Compra</th>
+                    <th>Vendedor/a</th>
+                    <th>Rectificador</th>
+                    <th>Técnico</th>
+                    <th>Fecha Instalación Aprox</th>
+                    <th>Fecha Pagos</th>
+                    <th>Abono</th>
+                    <th>Medio Pago</th>
+                </tr>
+            </thead>
+            <tbody>";
+    $id0 = 0;
+    $id_comp = 0;
+    while($row = mysqli_fetch_array($consulta)){
+        $id0 = $row["Id"];
+        $valor_descuentob = 0;
+        $fecha3 = date("d-m-Y",strtotime($row["Fecha_Instalacion"]));
+        if ($fecha3 == '30-11--0001' || $fecha3 == "30-11--0001"){
+            $fecha3 = "No hay fecha asignada";
+        }
+        if($id0 == $id_comp){
+            echo "<tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>".date("d-m-Y",strtotime($row["Fecha_Pago"]))."</td>
+                    <td>$ ".number_format($row["Valor_Abono"], 0, ',', '.')."</td>
+                    <td>".$row["MedioPago"]."</td></tr>";
+            echo "";
+        }elseif($id0 != $id_comp){
+            echo "<tr>
+                    <td><a href='generar_notaventapdf.php?id=".$id0."&idc=".$id_cliente."' type='button' value='View PDF' class='btn btn-primary' target='_blank'>".$id0."</td>";
+                    $consulta212245 = mysqli_query($conexion212245,"select Valor from Historial_Descuento_B_NotaVenta where IdNotaVenta='$id0'") or die (mysqli_error($conexion));
+                    if(mysqli_num_rows($consulta212245) > 0){
+                        if($row0005 = mysqli_fetch_array($consulta212245)){
+                            $valor_descuentob = $row0005["Valor"];
+                        }
+                        echo "<td>$ ".number_format(intval($row["Total"]) - intval($valor_descuentob), 0, ',', '.')."</td>";
+                    }else{
+                        echo "<td>$ ".number_format($row["Total"], 0, ',', '.')."</td>";
+                    }
+                    echo"<td>".$row["Vendedora"]."</td>";
+                    echo "<td>".$row["Rectificador"]."</td>
+                    <td>".$row["Instalador"]."</td>
+                    <td>".$fecha3."</td>
+                    <td>".date("d-m-Y",strtotime($row["Fecha_Pago"]))."</td>
+                    <td>$ ".number_format($row["Valor_Abono"], 0, ',', '.')."</td>
+                    <td>".$row["MedioPago"]."</td></tr>";
+            echo "";
+        }
+        $id_comp = $row["Id"];
+    }
+    echo "</tbody></table>";
+}
+?>

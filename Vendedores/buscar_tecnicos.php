@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link href="clientes.css" rel="stylesheet" type="text/css">
+<script src="../Imagenes/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<p></p>
+<br></br>
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$conexion = new mysqli("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+mysqli_set_charset($conexion,"utf8");
+if(mysqli_connect_errno()){
+    echo mysqli_connect_error();
+}
+$texto = $_POST["texto"];
+if($consulta = $conexion->query("Call Buscar_Tecnicos ('$texto')")){
+    echo "<table id='accion_tecnico'>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Clave</th>
+                    <th>Estado Calendario</th>
+                    <th>Estado Inventario</th>
+                    <th></th>
+                </tr>
+            </thead>
+        <tbody id='agregar_fila_tecnico'>";
+    if ($consulta) {
+        while($row = $consulta->fetch_assoc()){
+            $nombre_tec = $row["Nombre"];
+            echo "<tr>
+                    <td id='id_tecnico' data-id_id='".$row["Id"]."'>".$row["Id"]."</td>
+                    <td id='nombre_tecnico' data-id_nombre='".$row["Id"]."'>";
+                        $conexion223 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd") or die ("Error");
+                        mysqli_set_charset($conexion223,"utf8");
+                        $ejecutar223 = mysqli_query($conexion223,"select Instalador from Instaladores where Estado = 'Desactivar'");
+                        mysqli_set_charset($conexion223,"utf8");
+                        echo "<select id='nombre_tecnico' name='nombre_tecnico'>
+                        <option value='0' disabled selected>Seleccione Técnico...</option>";
+                            while ($row223 = mysqli_fetch_array($ejecutar223)) {
+                                $valor_nombre_tec = $row223[0];
+                                if ($nombre_tec == $valor_nombre_tec){
+                                    echo "<option value='$valor_nombre_tec' selected>".$valor_nombre_tec."</option>";
+                                }else if($nombre_tec != $valor_nombre_tec){
+                                    echo "<option value='$valor_nombre_tec'>".$valor_nombre_tec."</option>";
+                                }
+                            }
+                        echo "</select></td>
+                    <td id='usuario_tecnico' data-id_usuario='".$row["Id"]."' contenteditable>".$row["Usuario"]."</td>
+                    <td id='clave_tecnico' data-id_clave='".$row["Id"]."' contenteditable>".$row["Clave"]."</td>
+                    <td><button id='estado_tecnico' data-id_estado='".$row["Id"]."' data-estado='".$row["Estado"]."'>".$row["Estado"]."</button></td>
+                    <td><button id='estadoinventario_tecnico' data-id_estado_inventario='".$row["Id"]."' data-estado_inventario='".$row["EstadoInventario"]."'>".$row["EstadoInventario"]."</button></td>
+                    <td><button id='eliminar_tecnico' data-id_eliminar_tecnico='".$row["Id"]."'>Eliminar</button></td>
+                </tr>
+            ";
+        }
+    }
+    echo "</tbody></table>";
+    $consulta->close();
+    $conexion->more_results();
+};
+?>
+</body>
+</html>

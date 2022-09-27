@@ -1,0 +1,645 @@
+@charset "utf-8";
+@font-face {
+    font-family: 'SFProText-Regular';
+    src: url('../fonts/SFProText-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'SFProText-Medium';
+    src: url('../fonts/SFProText-Medium.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'SFProText-Light';
+    src: url('../fonts/SFProText-Light.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+#quitar_fila{
+    font-family: "SFProText-Regular";
+    height: 20px;
+    width: 20px;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid #E7E7E7;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 10%), 0 0px 1px 0px rgb(0 0 0 / 26%);
+    outline:0px;
+    cursor:pointer;
+}
+
+#quitar_fila:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 2px;
+    outline:0px;
+}
+
+.cuadrado_modal {
+  cursor: grab;
+}
+
+.cuadrado_modal:active {
+  cursor: grabbing;
+}
+
+#valor_desc{
+    width:38px;
+}
+
+.grid-item-cotizar {
+    font-family: "SFProText-Regular";
+    font-weight:normal;
+    color:black;
+    font-size: 1.1vw;
+    text-align: center;
+    width:70%;
+    background-color: rgba(255, 255, 255, 1);
+    margin-top:5px;
+    margin-left:20px;
+    margin-right:10px;
+    height:110%;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.titulo_cotizaciones{
+    font-family: "SFProText-Regular";
+    margin-right: 10px;
+}
+
+.input_ventas{
+    font-family: "SFProText-Regular";
+    font-size: 1.2vw;
+    margin-left:15px;
+    height: 40px;
+    width:35%;
+    text-align:center;
+    cursor:pointer;
+}
+
+#tabla_cotizar{
+    font-family: "SFProText-Regular";
+    outline:0px;
+    width: 100%;
+    text-align:center;
+    font-size: 1.1vw;
+    margin-top:15px;
+}
+
+#tabla_cotizar tr:nth-child(even){background-color: #FAFAFA; outline:0px; text-align:center; font-size: 1.1vw;}
+
+#tabla_cotizar tr:hover {background-color: #ddd; outline:0px; text-align:center; font-size: 1.1vw;}
+
+#tabla_cotizar tr:focus {background-color: #0075DB;}
+
+#tabla_cotizar td, #tabla_cotizar th {
+    border: 1px solid #C0C0C0;
+    outline:0px;
+    text-align:center;
+    font-size: 1.1vw;
+}
+
+#tabla_cotizar th {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+    background-color: #FCFCFC;
+    color: #5A5A5A;
+    outline:0px;
+    font-size: 1.1vw;
+}
+
+#tabla_repuestos{
+    font-family: "SFProText-Regular";
+    outline:0px;
+    width: 100%;
+    text-align:center;
+    font-size: 1.1vw;
+    margin-top:15px;
+}
+
+#tabla_repuestos tr:nth-child(even){background-color: #FAFAFA; outline:0px; text-align:center; font-size: 1.1vw;}
+
+#tabla_repuestos tr:hover {background-color: #ddd; outline:0px; text-align:center; font-size: 1.1vw;}
+
+#tabla_repuestos tr:focus {background-color: #0075DB;}
+
+#tabla_repuestos td, #tabla_repuestos th {
+    border: 1px solid #C0C0C0;
+    outline:0px;
+    text-align:center;
+    font-size: 1.1vw;
+}
+
+#tabla_repuestos th {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+    background-color: #FCFCFC;
+    color: #5A5A5A;
+    outline:0px;
+    font-size: 1.1vw;
+}
+
+#tabla_roller{
+    font-family: "SFProText-Regular";
+    outline:0px;
+    width: 100%;
+    text-align:center;
+    font-size: 1.1vw;
+    margin-top:15px;
+}
+
+#tabla_roller tr:nth-child(even){background-color: #FAFAFA; outline:0px; text-align:center; font-size: 1.1vw;}
+
+#tabla_roller tr:hover {background-color: #ddd; outline:0px; text-align:center; font-size: 1.1vw;}
+
+#tabla_roller tr:focus {background-color: #0075DB;}
+
+#tabla_roller td, #tabla_roller th {
+    border: 1px solid #C0C0C0;
+    outline:0px;
+    text-align:center;
+    font-size: 1.1vw;
+}
+
+#tabla_roller th {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+    background-color: #FCFCFC;
+    color: #5A5A5A;
+    outline:0px;
+    font-size: 1.1vw;
+}
+
+#tabla_otros{
+    font-family: "SFProText-Regular";
+    outline:0px;
+    width: 100%;
+    text-align:center;
+    font-size: 1.1vw;
+    margin-top:15px;
+}
+
+#tabla_otros tr:nth-child(even){background-color: #FAFAFA; outline:0px; text-align:center; font-size: 1.1vw;}
+
+#tabla_otros tr:hover {background-color: #ddd; outline:0px; text-align:center; font-size: 1.1vw;}
+
+#tabla_otros tr:focus {background-color: #0075DB;}
+
+#tabla_otros td, #tabla_otros th {
+    border: 1px solid #C0C0C0;
+    outline:0px;
+    text-align:center;
+    font-size: 1.1vw;
+}
+
+#tabla_otros th {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+    background-color: #FCFCFC;
+    color: #5A5A5A;
+    outline:0px;
+    font-size: 1.1vw;
+}
+
+#boton_paracotizar{
+    font-family: "SFProText-Regular";
+    height: 27px;
+    width: 120px;
+    margin-left:21px;
+    font-size: 14px;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+    margin-right:20px;
+    cursor:pointer;
+}
+
+#boton_paracotizar:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 2px;
+    outline:0px;
+}
+
+#boton_agregarfila{
+    font-family: "SFProText-Regular";
+    height: 30px;
+    width: 120px;
+    font-size: 1.1vw;
+    border-radius: 9px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    outline:0px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10), 0 0px 3px 0px rgba(0,0,0,0.255);
+}
+
+#boton_agregarfila:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 2px;
+    outline:0px;
+}
+
+#boton_agregarfila_roller{
+    font-family: "SFProText-Regular";
+    height: 30px;
+    width: 120px;
+    font-size: 1.1vw;
+    border-radius: 9px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    outline:0px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10), 0 0px 3px 0px rgba(0,0,0,0.255);
+}
+
+#boton_agregarfila_roller:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 2px;
+    outline:0px;
+}
+
+#guardar_coti{
+    font-family: "SFProText-Regular";
+    height: 30px;
+    width: 180px;
+    font-size: 1.1vw;
+    border-radius: 9px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    outline:0px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10), 0 0px 3px 0px rgba(0,0,0,0.255);
+}
+#guardar_coti:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 2px;
+    outline:0px;
+}
+
+#detalle_add{
+    font-family: "SFProText-Regular";
+    height: 27px;
+    width: 100%;
+   font-size: 1.1vw;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+}
+
+#detalle_add:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 1px;
+    outline:0px;
+}
+
+#detalle_add option{
+    color: black;
+}
+
+#detalle_add{
+    cursor:pointer;
+}
+
+#detalle_otros_add{
+    font-family: "SFProText-Regular";
+    height: 27px;
+    width: 100%;
+   font-size: 1.1vw;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+}
+
+#detalle_otros_add:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 1px;
+    outline:0px;
+}
+
+#detalle_otros_add option{
+    color: black;
+}
+
+#detalle_otros_add{
+    cursor:pointer;
+}
+
+#fc_add{
+    font-family: "SFProText-Regular";
+    height: 27px;
+    width: 100%;
+   font-size: 1.1vw;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+}
+
+#fc_add:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 1px;
+    outline:0px;
+}
+
+#fc_add option{
+    color: black;
+}
+
+#fc_add{
+    cursor:pointer;
+}
+
+#lama_add{
+    font-family: "SFProText-Regular";
+    height: 27px;
+    width: 100%;
+   font-size: 1.1vw;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+}
+
+#lama_add:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 1px;
+    outline:0px;
+}
+
+#lama_add option{
+    color: black;
+}
+
+#lama_add{
+    cursor:pointer;
+}
+
+#color_add{
+    font-family: "SFProText-Regular";
+    height: 27px;
+    width: 100%;
+   font-size: 1.1vw;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+}
+
+#color_add:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 1px;
+    outline:0px;
+}
+
+#color_add option{
+    color: black;
+}
+
+#color_add{
+    cursor:pointer;
+}
+
+#motor_add{
+    font-family: "SFProText-Regular";
+    height: 27px;
+    width: 100%;
+   font-size: 1.1vw;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+}
+
+#motor_add:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 1px;
+    outline:0px;
+}
+
+#motor_add option{
+    color: black;
+}
+
+#motor_add{
+    cursor:pointer;
+}
+
+#motor_addr{
+    font-family: "SFProText-Regular";
+    height: 27px;
+    width: 100%;
+   font-size: 1.1vw;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+}
+
+#motor_addr:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 1px;
+    outline:0px;
+}
+
+#motor_addr option{
+    color: black;
+}
+
+#motor_addr{
+    cursor:pointer;
+}
+
+#cortina_add{
+    font-family: "SFProText-Regular";
+    height: 27px;
+    width: 100%;
+   font-size: 1.1vw;
+    border-radius: 3px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    /*background-color: rgba(227, 227, 227, 0.9);   efecto en boton */
+    color: black;
+    cursor:pointer;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+}
+
+#cortina_add:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 1px;
+    outline:0px;
+}
+
+#cortina_add option{
+    color: black;
+}
+
+#cortina_add{
+    cursor:pointer;
+}
+
+#aritmetica_cotizacion{
+    float:right;
+}
+#aritmetica_cotizacion_ext{
+    float:right;
+}
+#valor_ins, #total, #subtotal{
+    width:100px;
+}
+#saldo_desc{
+    width:100px;
+}
+#desc{
+    width:38px;
+}
+#desc1{
+    width:38px;
+}
+#saldo_desc1, #valor_ins1, #total1{
+    width:100px;
+}
+#saldo_desc1{
+    width:100px;
+}
+
+.adorno_botones_modal{
+    padding:5px 0 0 8px;
+    float:left;
+}
+
+.modal_cotizar {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+
+.modal-content {
+    background-color: #f4f4f4;
+    margin: auto;
+    width: 80%;
+    border-radius: 6px;
+	box-shadow: 0 12px 15px 0 rgba(0,0,0,0.22), 0 17px 48px 0 rgba(0,0,0,0.16);
+}
+
+.cuadrado_modal{
+    width: 100%; 
+	height: 60px;
+    background:#fbfbfb;
+	margin-left:0%;
+	border-radius: 6px 6px 0 0;
+	text-align:center;
+}
+
+.close_modal {
+	color: #aaaaaa;
+	float: left;
+	font-size: 18px;
+	font-weight: bold;
+	background-image:url("../Imagenes/wincontrol_cerrar.png");
+}
+
+.close_modal:hover, .close_modal:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.grid-item-modal {
+    font-family: "SFProText-Regular";
+    font-weight:normal;
+    font-size: 1.1vw;
+    text-align: center;
+    margin-top:5px;
+    margin-left:20px;
+    margin-right:20px;
+    height:110%;
+    border-radius: 6px;
+    border: 2px solid #FFFFFF;
+    background-image: linear-gradient(white,  white);
+    color: black;
+    cursor:pointer;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10), 0 0px 1px 0px rgba(0,0,0,0.255);
+    outline:0px;
+}
+
+
+.grid-item-modal:active{
+    background-image: linear-gradient(#65AFFA, #0E81FF);
+    color: white;
+    border: 1px;
+    outline:0px;
+}

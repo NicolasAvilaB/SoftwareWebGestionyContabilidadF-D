@@ -1,0 +1,32 @@
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$conexion = mysqli_connect("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion,"utf8");
+if(!$conexion){
+    echo "No se ha podido conectar" . mysqli_error();
+    exit();
+}
+$inst = $_POST["inst"];
+$pers1 = $_POST["pers1"];
+$pers2 = $_POST["pers2"];
+$manual = $_POST["manual"];
+$motor = $_POST["motor"];
+$color = $_POST["color"];
+$id = $_POST["id"];
+$inst = str_replace('<span style="font-size: 15.026px;">', '', $inst);
+$inst = str_replace('<', '', $inst);
+$inst = str_replace('>', '', $inst);
+$inst = str_replace('span', '', $inst);
+$inst = str_replace('style=', '', $inst);
+$inst = str_replace('font-size: ', '', $inst);
+$inst = str_replace('15.026px;', '', $inst);
+$inst = str_replace('px;', '', $inst);
+$inst = str_replace('"', '', $inst);
+$inst = str_replace('</span>', '', $inst);
+$inst = str_replace('&nbsp;', '', $inst);
+$consulta = mysqli_query($conexion,"Call Ingresar_Instaladores ('$inst','$pers1','$pers2','$manual','$motor','$color','$id')") or die (mysqli_error($conexion));
+if(!$consulta){
+    echo "Error al insertar los datos ". mysqli_error();
+}else{
+}
+?>

@@ -1,0 +1,34 @@
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$conexion = mysqli_connect("127.0.0.1","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+$conexion2 = mysqli_connect("127.0.0.1","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+$conexion3 = mysqli_connect("127.0.0.1","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+$conexion4 = mysqli_connect("127.0.0.1","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion,"utf8");
+mysqli_set_charset($conexion2,"utf8");
+mysqli_set_charset($conexion3,"utf8");
+mysqli_set_charset($conexion4,"utf8");
+if(!$conexion){
+    echo "No se ha podido conectar" . mysqli_error();
+    exit();
+}
+$id = $_POST["id"];
+$tecnico = $_POST["tecnico"];
+$rectificador = $_POST["rectificador"];
+$fabricacion = $_POST["fabricacion"];
+$instalacion = $_POST["instalacion"];
+$efectuada = $_POST["efectuada"];
+$vendedora = utf8_encode($_POST["vendedora"]);
+$distribuidor = utf8_encode($_POST["distribuidor"]);
+$fechaventa = $_POST["fechaventa"];
+$tot = $_POST["tot"];
+$consulta = mysqli_query($conexion,"Call Modificar_Fechas_NotaVenta ('$id','$tecnico','$rectificador','$fabricacion','$instalacion','$efectuada')");
+$consulta2 = mysqli_query($conexion2,"Call Modificar_Vendedora_Fechas_NotaVenta ('$id','".utf8_decode($vendedora)."')");
+$consulta3 = mysqli_query($conexion3,"Call Modificar_Vendedora_Distribuidor_NotaVenta ('$id','".utf8_decode($distribuidor)."')");
+$consulta4 = mysqli_query($conexion4,"Call Modificar_Vendedora_FechaVenta_NotaVenta ('$id','$fechaventa')");
+$consulta4 = mysqli_query($conexion4,"Call Modificar_Vendedora_Total_NotaVenta ('$id','$tot')");
+if(!$consulta){
+    echo "Error al insertar los datos ". mysqli_error();
+}else{
+}
+?>

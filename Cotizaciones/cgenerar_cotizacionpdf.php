@@ -1,0 +1,734 @@
+<?php
+require('./fpdf/fpdf.php');
+$id = 0;
+class PDF extends FPDF
+{
+
+//Cabecera de página
+   function Header()
+   {
+       if ($this->PageNo() == 1){
+            setlocale(LC_ALL,"es_CL.UTF-8");
+            $id = $_REQUEST["id"];
+            $idc = $_REQUEST["idc"];
+            $conexion = new mysqli("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $conexion1 = new mysqli("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            mysqli_set_charset($conexion,"utf8");
+            mysqli_set_charset($conexion1,"utf8");
+            if(mysqli_connect_errno()){
+                echo mysqli_connect_error();
+            }
+            $consulta = $conexion->query("Call Buscar_Cliente_Cotizacion ('$idc')");
+            $consulta1 = $conexion1->query("Call Buscar_Empresa_Cotizacion ('$id')");
+            $nombre_empresa = "";
+            $descripcion = "";
+            while($row1 = $consulta1->fetch_assoc()){
+                $nombre_empresa = $row1["Empresa"];
+                $descripcion = utf8_decode($row1["Descripcion"]);
+            }
+            $this->Ln(1);
+            $this->SetFont('Arial', 'B', 14);
+            $this->Cell(62);
+            $nombre_empresa = str_replace('amp;', '', $nombre_empresa);
+            $this->Cell(65,-4,utf8_decode($nombre_empresa).".-",0,0,'C');
+            $this->Ln(1);
+            $this->SetFont('Arial', '', 11);
+            $this->Cell(63);
+            $this->Cell(65,4,$descripcion,0,0,'C');
+            $this->Ln(6);
+            $this->SetFont('Arial','B',12);
+            //Movernos a la derecha
+            //Título
+            $this->Ln(3);
+            $this->Cell(83);
+            $this->Cell(65,4,utf8_decode("Cotización"),'C');
+            $this->Cell(65,4,utf8_decode("N° ".$id.".-"),'C');
+            $inicio = date("Y-m-d");
+            $this->Ln(3);
+            $this->Cell(115);
+            $this->SetFont('Arial','',11);
+            $this->Cell(60,10,utf8_decode('Fecha: '.strftime("%A").', '.strftime("%d").' de '.strftime("%B").' del '.strftime("%Y").'.-'));
+            //Salto de línea
+            $this->Ln(1);
+            $this->SetFont('Arial','',11);
+            $se= utf8_decode("Señor (a): ");
+            $nombre = "";
+            $telefono = "";
+            $email = "";
+            $direccion = "";
+            $comuna = "";
+            while($row = $consulta->fetch_assoc()){
+                $nombre = utf8_decode($row["Nombre"]);
+                $telefono = utf8_decode($row["Telefono"]);
+                $email = utf8_decode($row["Email"]);
+                $direccion = utf8_decode($row["Direccion"]);
+                $comuna = utf8_decode($row["Comuna"]);
+            }
+            $consulta->close();
+            $conexion->more_results();
+            $this->Cell(-7);
+            $this->Cell(60,10,$se.$nombre);
+            $this->Ln(5);
+            $this->Cell(-7);
+            $this->Cell(60,10,'Direccion: '.$direccion);
+            $this->Ln(5);
+            $this->Cell(-7);
+            $this->Cell(60,10,'Comuna: '.$comuna);
+            $this->Ln(5);
+            $this->Cell(-7);
+            $this->Cell(60,10,'Fono: '.$telefono);
+            $this->Ln(5);
+            $this->Cell(-7);
+            $this->Cell(60,10,'Email: '.$email);
+            $this->Ln(8);
+            $this->SetFont('Arial','B',10);
+            $this->Cell(-7);
+            $this->Cell(60,10,utf8_decode("Por la presente, me es muy grato hacerle llegar la cotización requerida por usted.-"));
+       }
+   }
+
+   //Pie de página
+   /*function Footer()
+   {
+        $this->SetY(-15);
+        $this->SetFont('Arial','I',8);
+        $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+   }*/
+
+   function TablaSimple()
+   {            //foreach($header as $col)
+
+        $this->SetFont('Arial','I',10);
+        $this->Ln(-6);
+        $conexion2 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+        mysqli_set_charset($conexion2,"utf8");
+        if(mysqli_connect_errno()){
+            echo mysqli_connect_error();
+        }
+        $id = $_REQUEST["id"];
+        $suma = 0;
+        $sumaca =0;
+        $sumaca2 =0;
+        $suma_manual = 0;
+        $suma_motor = 0;
+        $suma_manualr = 0;
+        $suma_motorr = 0;
+        $suma_pers = 0;
+        $suma_pers2 = 0;
+        $suma_subrep = 0;
+        $consulta2 = mysqli_query($conexion2, "select FinalCrece, Cantidad, Ancho, Alto, IdMotor, IdColor, ValorUn, ValorTotal, IdLama from Cotizaciones where IdTotalCotizacion = '$id'");
+        $consulta0 = mysqli_query($conexion2, "select IdRoller, IdRepuesto from TotalCotizaciones where IdCotizacion = '$id'");
+        $id_roller = "";
+        $id_repuesto = "";
+        $id_otros = "";
+        $subtotal_persianas = 0;
+        $subtotal_roller = 0;
+        if($fila_ids = mysqli_fetch_array($consulta0)){
+            $id_roller = $fila_ids[0];
+            $id_repuesto = $fila_ids[1];
+            if($id_roller == 0){
+                $id_roller = -1;
+            }
+            if($id_repuesto == 0){
+                $id_repuesto = -1;
+            }
+        }
+        $consultaotros = mysqli_query($conexion2, "select IdOtros from DetalleOtros where IdPersiana = '$id'");
+        $consultaotros_roller = mysqli_query($conexion2, "select IdOtros from DetalleOtros where IdRoller = '$id_roller'");
+        $consultaotros_repuesto = mysqli_query($conexion2, "select IdOtros from DetalleOtros where IdRepuestos = '$id_repuesto'");
+        if($rowotro = mysqli_fetch_array($consultaotros)){
+            $id_otros = $rowotro[0];
+        }
+        if($rowotro_ro = mysqli_fetch_array($consultaotros_roller)){
+            $id_otros = $rowotro_ro[0];
+        }
+        if($rowotro_re = mysqli_fetch_array($consultaotros_repuesto)){
+            $id_otros = $rowotro_re[0];
+        }
+
+        if (mysqli_num_rows($consulta2) > 0){
+            $this->Cell(-7);
+            $this->Cell(60,10,'Persianas');
+            $this->Ln(8);
+            $this->Cell(-6);
+            $this->Cell(7,7,'F/C',1);
+            $this->Cell(10,7,'Cant',1);
+            $this->Cell(12,7,'Ancho',1);
+            $this->Cell(12,7,'Alto',1);
+            $this->Cell(71,7,'Accionamiento',1);
+            $this->Cell(36,7,'Color',1);
+            $this->Cell(26,7,'Valor Unid.',1);
+            $this->Cell(28,7,'Total',1);
+            $this->Ln();
+        }
+        while($row2 = mysqli_fetch_array($consulta2)){
+            $fncr = $row2[0];
+            $cantidad = $row2[1];
+            $ancho = $row2[2];
+            $alto = $row2[3];
+            $nmotor = utf8_decode($row2[4]);
+            $ncolor = utf8_decode($row2[5]);
+            $nombre_motor = "";
+            $nombre_color = "";
+            $nombre_lama = "";
+            $idlama = $row2[8];
+            $vun = 0;
+            $consulta0 = mysqli_query($conexion2, "select NombreMotor from Motor where Id = '$nmotor'");
+            if ($row_nombremotor= mysqli_fetch_array($consulta0)){
+                $nombre_motor = $row_nombremotor[0];
+            }
+            $consulta00 = mysqli_query($conexion2, "select NombreColor from Color where Id = '$ncolor'");
+            if ($row_nombrecolor= mysqli_fetch_array($consulta00)){
+                $nombre_color = $row_nombrecolor[0];
+            }
+            $consulta000 = mysqli_query($conexion2, "select NombreLama from Lama where Id = '$idlama'");
+            if ($row_nombrelama= mysqli_fetch_array($consulta000)){
+                $nombre_lama = $row_nombrelama[0];
+            }
+            $aprox_ancho = 0;
+            $aprox_alto = 0;
+        	$suma_ancho = 0;
+        	$suma_alto = 0;
+        	$desc = 0;
+        	$descm = 0;
+        	$mot = 0;
+            if ($fncr == 0){
+            	$aprox_ancho = ceil($ancho/100)*100;
+            	$aprox_alto = ceil($alto/100)*100;
+        	}else if ($fncr == 1){
+            	$suma_ancho = $ancho + 200;
+            	$suma_alto = $alto + 300;
+            	$aprox_ancho = ceil($suma_ancho/100)*100;
+            	$aprox_alto = ceil($suma_alto/100)*100;
+        	}
+        	if($aprox_ancho < 1000){
+        	    $aprox_ancho = 1000;
+        	}
+        	if($aprox_alto < 1000){
+        	    $aprox_alto = 1000;
+        	}
+        	$conexion0002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta0000 = mysqli_query($conexion0002, "select Valor from Motor where NombreMotor = '$nombre_motor'") or die (mysqli_error($conexion002));
+            if ($rowmot= mysqli_fetch_array($consulta0000)){
+                $mot = intval($rowmot[0]);
+            }
+        	$conexion002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta000 = mysqli_query($conexion002, "select Desc_Prov_1 from Descuento where Producto = '$nombre_lama'") or die (mysqli_error($conexion002));
+            if ($rowdesc= mysqli_fetch_array($consulta000)){
+                $desc = intval($rowdesc[0]);
+            }
+            $conexion00002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta00000 = mysqli_query($conexion00002, "select Desc_Prov_1 from Descuento where Producto = '$nombre_motor'") or die (mysqli_error($conexion002));
+            if ($rowdescm= mysqli_fetch_array($consulta00000)){
+                $descm = intval($rowdescm[0]);
+            }
+            $conexion02 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta00 = mysqli_query($conexion02, "Call Mostrar_Precio_Lama ('$aprox_ancho','$aprox_alto','$nombre_lama')");
+            if ($rowprecio= mysqli_fetch_array($consulta00)){
+                $vun = ceil(intval($rowprecio[0]) - intval($rowprecio[0]) * $desc / 100);
+                $vun += ceil(intval($mot) - intval($mot) * $descm / 100);
+            }
+            $vt = $vun * $cantidad;
+            if ($fncr == 1){
+                $fncr = ' C';
+            }elseif($fncr == 0){
+                $fncr = ' F';
+            }
+            $subtotal_persianas += intval($vt);
+            $findme = 'Manual';
+            $pos = strpos($nombre_motor, $findme);
+            if ($pos === false) {
+                //motor
+                $suma_motor += 1 * $cantidad;
+            }else{
+                //manual
+                $suma_manual += 1 * $cantidad;
+            }
+            $this->Cell(-6);
+            $this->Cell(7,7,$fncr,1);
+            $this->Cell(10,7,$cantidad,1);
+            $this->Cell(12,7,$ancho,1);
+            $this->Cell(12,7,$alto,1);
+            $this->Cell(71,7,utf8_decode($nombre_motor),1);
+            $this->Cell(36,7,utf8_decode($nombre_color),1);
+            $this->Cell(26,7,"$ ".number_format($vun, 0, ',', '.'),1);
+            $this->Cell(28,7,"$ ".number_format($vt, 0, ',', '.'),1);
+            $this->Ln();
+            $ganancia = intval($cantidad);
+		    $sumaca += $ganancia;
+		    $row2++;
+        }
+        $subconsulta_persiana = mysqli_query($conexion2, "select Subtotal, Descuento, Instalacion from TotalCotizaciones where IdCotizacion = '$id'");
+        if($fila_subconsulta_persiana = mysqli_fetch_array($subconsulta_persiana)){
+            $this->Cell(140);
+            $this->Cell(28,7,"Subtotal: ",1);
+            $this->Cell(28,7,"$ ".number_format($subtotal_persianas, 0, ',', '.'),1);
+            $this->Ln();
+            $valor_inst1 = 0;
+            $this->Cell(140);
+            $this->Cell(28,7,utf8_decode("Instalación: ").$sumaca,1);
+            $conexiona = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            if ($suma_manual == 1){
+                $consultaa = mysqli_query($conexiona, "Call Mostrar_Precio_Instaladores1 ()");
+                if ($rowa= mysqli_fetch_array($consultaa)){
+                    $valor_inst1 += intval($rowa[0]);
+                }
+            }else if ($suma_manual == 2){
+                $consultaa2 = mysqli_query($conexiona, "Call Mostrar_Precio_Instaladores2 ()");
+                if ($rowa2= mysqli_fetch_array($consultaa2)){
+                    $valor_inst1 += intval($rowa2[0]);
+                }
+            }else if ($suma_manual >= 3){
+                $consultaa3 = mysqli_query($conexiona, "Call Mostrar_Precio_Instaladores3 ()");
+                if ($rowa3= mysqli_fetch_array($consultaa3)){
+                    $valor_inst1 += intval($suma_manual) * intval($rowa3[0]);
+                }
+            }
+            mysqli_close($conexiona);
+            $conexiona0 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            if ($suma_motor == 1){
+                $consultaa0 = mysqli_query($conexiona0, "Call Mostrar_Precio_Instaladores1 ()");
+                if ($rowa0= mysqli_fetch_array($consultaa0)){
+                    $valor_inst1 += intval($rowa0[0]);
+                }
+            }else if ($suma_motor == 2){
+                $consultaa20 = mysqli_query($conexiona0, "Call Mostrar_Precio_Instaladores2 ()");
+                if ($rowa20= mysqli_fetch_array($consultaa20)){
+                    $valor_inst1 += intval($rowa20[0]);
+                }
+            }else if ($suma_motor >= 3){
+                $consultaa30 = mysqli_query($conexiona0, "Call Mostrar_Precio_Instaladores4 ()");
+                if ($rowa30= mysqli_fetch_array($consultaa30)){
+                    $valor_inst1 += intval($suma_motor) * intval($rowa30[0]);
+                }
+            }
+            mysqli_close($conexiona0);
+            $this->Cell(28,7,"$ ".number_format($valor_inst1, 0, ',', '.'),1);
+            $this->Ln();
+            $this->Cell(140);
+            $this->Cell(28,7,"Saldo: ",1);
+            $suma_pers = intval($valor_inst1) + intval($subtotal_persianas);
+            $this->Cell(28,7,"$ ".number_format($suma_pers, 0, ',', '.'),1);
+            $this->Ln();
+        }
+        //consulta_roller
+        $subconsulta_roller = mysqli_query($conexion2, "select FinalCrece, Cantidad, Ancho, Alto, IdAccionamiento, Color, IdRoller, ValorUnitario, ValorTotal from DetalleRollers where IdTotalRollers = '$id_roller'");
+        if (mysqli_num_rows($subconsulta_roller) > 0){
+            $this->Cell(-7);
+            $this->Cell(60,10,'Roller');
+            $this->Ln(8);
+            $this->Cell(-6);
+            $this->Cell(7,7,'F/C',1);
+            $this->Cell(10,7,'Cant',1);
+            $this->Cell(11,7,'Ancho',1);
+            $this->Cell(10,7,'Alto',1);
+            $this->Cell(27,7,'Accionamiento',1);
+            $this->Cell(21,7,'Color',1);
+            $this->Cell(68,7,'Roller',1);
+            $this->Cell(23,7,'Valor Unid.',1);
+            $this->Cell(25,7,'Total',1);
+            $this->Ln();
+        }
+        while($row_subroller = mysqli_fetch_array($subconsulta_roller)){
+            $fncr = $row_subroller[0];
+            $cantidad = $row_subroller[1];
+            $ancho = $row_subroller[2];
+            $alto = $row_subroller[3];
+            $nmotor = utf8_decode($row_subroller[4]);
+            $acc = utf8_decode($row_subroller[6]);
+            $nombre_motor = "";
+            $nombre_cortina = "";
+            $vun = 0;
+            $consulta0000 = mysqli_query($conexion2, "select NombreMotor from Motor_Roller where Id = '$nmotor'");
+            if($row_motor_roller = mysqli_fetch_array($consulta0000)){
+                $nombre_motor = $row_motor_roller[0];
+            }
+            $consulta00000 = mysqli_query($conexion2, "select NombreRoller from Rollers where Id = '$acc'");
+            if($row_motor_roller2 = mysqli_fetch_array($consulta00000)){
+                $nombre_cortina = $row_motor_roller2[0];
+            }
+            $ncolor = utf8_decode($row_subroller[5]);
+            $aprox_ancho = 0;
+            $aprox_alto = 0;
+        	$suma_ancho = 0;
+        	$suma_alto = 0;
+        	$desc = 0;
+        	$descm = 0;
+        	$mot = 0;
+            if ($fncr == 0){
+                $aprox_ancho = ceil($ancho/100)*100;
+                $aprox_alto = ceil($alto/100)*100;
+            }else if ($fncr == 1){
+                $suma_ancho = $ancho + 150;
+                $suma_alto = $alto + 200;
+                $aprox_ancho = ceil($suma_ancho/100)*100;
+                $aprox_alto = ceil($suma_alto/100)*100;
+            }
+            if($aprox_ancho < 600){
+        	    $aprox_ancho = 600;
+        	}
+        	if($aprox_alto < 600){
+        	    $aprox_alto = 600;
+        	}
+        	$conexion0002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta0000 = mysqli_query($conexion0002, "select Valor from Motor where NombreMotor = '$nombre_motor'") or die (mysqli_error($conexion002));
+            if ($rowmot= mysqli_fetch_array($consulta0000)){
+                $mot = intval($rowmot[0]);
+            }
+        	$conexion002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta000 = mysqli_query($conexion002, "select Desc_Prov_1 from Descuento where Producto = '$nombre_cortina'") or die (mysqli_error($conexion002));
+            if ($rowdesc= mysqli_fetch_array($consulta000)){
+                $desc = intval($rowdesc[0]);
+            }
+            $conexion00002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta00000 = mysqli_query($conexion00002, "select Desc_Prov_1 from Descuento where Producto = '$nombre_motor'") or die (mysqli_error($conexion002));
+            if ($rowdescm= mysqli_fetch_array($consulta00000)){
+                $descm = intval($rowdescm[0]);
+            }
+            $conexion02 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta00 = mysqli_query($conexion02, "Call Mostrar_Precio_Roller ('$aprox_ancho','$aprox_alto','$nombre_cortina')");
+            if ($rowprecio= mysqli_fetch_array($consulta00)){
+                $vun = ceil(intval($rowprecio[0]) - intval($rowprecio[0]) * $desc / 100);
+                $vun += ceil(intval($mot) - intval($mot) * $descm / 100);
+            }
+            $vt = $vun * $cantidad;
+            if ($fncr == 1){
+                $fncr = ' C';
+            }elseif($fncr == 0){
+                $fncr = ' F';
+            }
+            $subtotal_roller += intval($vt);
+            $findme = 'Manual';
+            $pos = strpos($nombre_motor, $findme);
+            if ($pos === false) {
+                $suma_motorr += 1 * $cantidad;
+            }else{
+                $suma_manualr += 1 * $cantidad;
+            }
+            $this->Cell(-6);
+            $this->Cell(7,7,$fncr,1);
+            $this->Cell(10,7,$cantidad,1);
+            $this->Cell(11,7,$ancho,1);
+            $this->Cell(10,7,$alto,1);
+            $this->Cell(27,7,utf8_decode($nombre_motor),1);
+            $this->Cell(21,7,$ncolor,1);
+            $this->Cell(68,7,utf8_decode($nombre_cortina),1);
+            $this->Cell(23,7,"$ ".number_format($vun, 0, ',', '.'),1);
+            $this->Cell(25,7,"$ ".number_format($vt, 0, ',', '.'),1);
+            $this->Ln();
+            $ganancia = intval($cantidad);
+		    $sumaca2 += $ganancia;
+		    $row_subroller++;
+        }
+        $subconsulta_roller = mysqli_query($conexion2, "select Subtotal, Descuento, Instalacion from TotalRollers where Id = '$id_roller'");
+        if($fila_subconsulta_roller = mysqli_fetch_array($subconsulta_roller)){
+            $this->Cell(140);
+            $this->Cell(28,7,"Subtotal: ",1);
+            $this->Cell(28,7,"$ ".number_format($subtotal_roller, 0, ',', '.'),1);
+            $this->Ln();
+            $valor_inst1 = 0;
+            $this->Cell(140);
+            $this->Cell(28,7,utf8_decode("Instalación: ").$sumaca2,1);
+            $conexiona = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            if ($suma_manualr == 1){
+                $consultaa = mysqli_query($conexiona, "Call Mostrar_Precio_Instaladores1R ()");
+                if ($rowa= mysqli_fetch_array($consultaa)){
+                    $valor_inst1 += intval($rowa[0]);
+                }
+            }else if ($suma_manualr == 2){
+                $consultaa2 = mysqli_query($conexiona, "Call Mostrar_Precio_Instaladores2R ()");
+                if ($rowa2= mysqli_fetch_array($consultaa2)){
+                    $valor_inst1 += intval($rowa2[0]);
+                }
+            }else if ($suma_manualr >= 3){
+                $consultaa3 = mysqli_query($conexiona, "Call Mostrar_Precio_Instaladores3R ()");
+                if ($rowa3= mysqli_fetch_array($consultaa3)){
+                    $valor_inst1 += intval($suma_manualr) * intval($rowa3[0]);
+                }
+            }
+            mysqli_close($conexiona);
+            $conexiona0 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            if ($suma_motorr == 1){
+                $consultaa0 = mysqli_query($conexiona0, "Call Mostrar_Precio_Instaladores1R ()");
+                if ($rowa0= mysqli_fetch_array($consultaa0)){
+                    $valor_inst1 += intval($rowa0[0]);
+                }
+            }else if ($suma_motorr == 2){
+                $consultaa20 = mysqli_query($conexiona0, "Call Mostrar_Precio_Instaladores2R ()");
+                if ($rowa20= mysqli_fetch_array($consultaa20)){
+                    $valor_inst1 += intval($rowa20[0]);
+                }
+            }else if ($suma_motorr >= 3){
+                $consultaa30 = mysqli_query($conexiona0, "Call Mostrar_Precio_Instaladores4R ()");
+                if ($rowa30= mysqli_fetch_array($consultaa30)){
+                    $valor_inst1 += intval($suma_motorr) * intval($rowa30[0]);
+                }
+            }
+            mysqli_close($conexiona0);
+            $this->Cell(28,7,"$ ".number_format($valor_inst1, 0, ',', '.'),1);
+            $this->Ln();
+            $this->Cell(140);
+            $this->Cell(28,7,"Saldo: ",1);
+            $suma_pers2 = intval($valor_inst1) + intval($subtotal_roller);
+            $this->Cell(28,7,"$ ".number_format($suma_pers2, 0, ',', '.'),1);
+            $this->Ln();
+        }
+        //repuestos
+        $subconsulta_repuesto = mysqli_query($conexion2, "select Cantidad, IdRepuesto, ValorUnitario, ValorTotal from DetalleRepuestos where IdTotalRepuestos = '$id_repuesto'");
+        if (mysqli_num_rows($subconsulta_repuesto) > 0){
+            $this->Cell(-7);
+            $this->Cell(60,10,'Repuesto');
+            $this->Ln(8);
+            $this->Cell(-6);
+            $this->Cell(10,7,'Cant',1);
+            $this->Cell(136,7,'Repuesto',1);
+            $this->Cell(28,7,'Valor Unid.',1);
+            $this->Cell(28,7,'Total',1);
+            $this->Ln();
+            $descm = 0;
+            $mot = 0;
+            while($row_subrepuesto = mysqli_fetch_array($subconsulta_repuesto)){
+                $cantidad = $row_subrepuesto[0];
+                $rep = $row_subrepuesto[1];
+                $nombre_repuesto = "";
+                $consulta000 = mysqli_query($conexion2, "select NombreRepuesto from Repuestos where Id = '$rep'");
+                if($row_repuesto = mysqli_fetch_array($consulta000)){
+                    $nombre_repuesto = $row_repuesto[0];
+                }
+                $conexion0002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+                $consulta0000 = mysqli_query($conexion0002, "select Valor from Repuestos where NombreRepuesto = '$nombre_repuesto'") or die (mysqli_error($conexion002));
+                if ($rowmot= mysqli_fetch_array($consulta0000)){
+                    $mot = intval($rowmot[0]);
+                }
+                $conexion00002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+                $consulta00000 = mysqli_query($conexion00002, "select Desc_Prov_1 from Descuento where Producto = '$nombre_repuesto'") or die (mysqli_error($conexion002));
+                if ($rowdescm= mysqli_fetch_array($consulta00000)){
+                    $descm = intval($rowdescm[0]);
+                }
+                $vun = ceil(intval($mot) - intval($mot) * $descm / 100);
+                $vt = $vun * $cantidad;
+                $this->Cell(-6);
+                $this->Cell(10,7,$cantidad,1);
+                $this->Cell(136,7,utf8_decode($nombre_repuesto),1);
+                $this->Cell(28,7,"$ ".number_format($vun, 0, ',', '.'),1);
+                $this->Cell(28,7,"$ ".number_format($vt, 0, ',', '.'),1);
+                $this->Ln();
+                $ganancia = intval($vt);
+    		    $suma_subrep += $ganancia;
+    		    $row_subrepuesto++;
+            }
+            $this->Cell(140);
+            $this->Cell(28,7,"Subtotal: ",1);
+            $this->Cell(28,7,"$ ".number_format($suma_subrep, 0, ',', '.'),1);
+            $this->Ln();
+        }
+        //otros
+        $subconsulta_otros = mysqli_query($conexion2, "select Cantidad, IdOtros, ValorUnitario, ValorTotal from DetalleOtros where IdPersiana= '$id'");
+        if (mysqli_num_rows($subconsulta_otros) > 0){
+            $this->Cell(-7);
+            $this->Cell(60,10,'Otros');
+            $this->Ln(8);
+            $this->Cell(-6);
+            $this->Cell(10,7,'Cant',1);
+            $this->Cell(136,7,'Detalle',1);
+            $this->Cell(28,7,'Valor Unid.',1);
+            $this->Cell(28,7,'Total',1);
+            $this->Ln();
+            $descm = 0;
+            $mot = 0;
+        }
+        while($row_subotros = mysqli_fetch_array($subconsulta_otros)){
+            $cantidad = $row_subotros[0];
+            $rep = $row_subotros[1];
+            $nombre_repuesto = "";
+            $consulta000 = mysqli_query($conexion2, "select NombreOtros from Otros where Id = '$rep'");
+            if($row_repuesto = mysqli_fetch_array($consulta000)){
+                $nombre_repuesto = $row_repuesto[0];
+            }
+            $conexion0002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta0000 = mysqli_query($conexion0002, "select Valor from Otros where NombreOtros = '$nombre_repuesto'") or die (mysqli_error($conexion002));
+            if ($rowmot= mysqli_fetch_array($consulta0000)){
+                $mot = intval($rowmot[0]);
+            }
+            $conexion00002 = mysqli_connect("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+            $consulta00000 = mysqli_query($conexion00002, "select Desc_Prov_1 from Descuento where Producto = '$nombre_repuesto'") or die (mysqli_error($conexion002));
+            if ($rowdescm= mysqli_fetch_array($consulta00000)){
+                $descm = intval($rowdescm[0]);
+            }
+            $vun = ceil(intval($mot) - intval($mot) * $descm / 100);
+            $vt = $vun * $cantidad;
+            $this->Cell(-6);
+            $this->Cell(10,7,$cantidad,1);
+            $this->Cell(136,7,utf8_decode($nombre_repuesto),1);
+            $this->Cell(28,7,"$ ".number_format($vun, 0, ',', '.'),1);
+            $this->Cell(28,7,"$ ".number_format($vt, 0, ',', '.'),1);
+            $this->Ln();
+            $ganancia = intval($vt);
+		    $suma += $ganancia;
+		    $row_subotros++;
+        }
+        if (mysqli_num_rows($subconsulta_otros) > 0){
+            $this->Cell(140);
+            $this->Cell(28,7,"Subtotal: ",1);
+            $this->Cell(28,7,"$ ".number_format($suma, 0, ',', '.'),1);
+            $this->Ln();
+        }
+        $consulta2->close();
+        $conexion2->more_results();
+        //Título
+        $subconsulta_totalcompleto = mysqli_query($conexion2, "select Neto, IVA, TotalInicial, DescuentoAdicional, Total from TotalCotizaciones where IdCotizacion = '$id'");
+        if($fila_totalcompleto = mysqli_fetch_array($subconsulta_totalcompleto)){
+            $suma_total = intval($suma_pers) + intval($suma_pers2) + intval($suma_subrep) + intval($suma);
+            $iva = ceil($suma_total * 0.19);
+            $this->Ln();
+            $this->Cell(140);
+            $this->Cell(28,7,"Iva: ",1);
+            $this->Cell(28,7,"$ ".number_format($iva, 0, ',', '.'),1);
+            $this->Ln();
+            $this->Cell(140);
+            $this->Cell(28,7,"Total: ",1);
+            $this->Cell(28,7,"$ ".number_format(intval($suma_total) + intval($iva), 0, ',', '.'),1);
+        }
+        $this->Ln(-8);
+        $this->Cell(60,10,'Condiciones de Pago:');
+        $this->Ln(5);
+        $id = $_REQUEST["id"];
+        $conexions = new mysqli("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+        $consultas = $conexions->query("Call Buscar_Empresa_Cotizacion('$id')");
+        $nombre_empresass = "";
+        while($row1s = $consultas->fetch_assoc()){
+            $nombre_empresass = $row1s["Empresa"];
+        }
+        $cadena_buscada01 = 'P&M';
+        $cadena_buscada03 = 'Protecc';
+        $posicion_coincidencia01 = strpos($nombre_empresass, $cadena_buscada01);
+        $posicion_coincidencia03 = strpos(utf8_decode($nombre_empresass), $cadena_buscada03);
+        if ($posicion_coincidencia01 === false) {
+            if ($posicion_coincidencia03 === false) {
+                $this->Cell(60,10,'* 50% al momento de firmar nota de venta.');
+            } else {
+                $this->Cell(60,10,utf8_decode("* 50% Para enviar a fabricación."));
+            }
+        } else {
+            $this->Cell(60,10,utf8_decode("* 50% Para enviar a fabricación."));
+        }
+        $this->Ln(5);
+        if ($posicion_coincidencia01 === false) {
+            if ($posicion_coincidencia03 === false) {
+                $this->Cell(60,10,utf8_decode("* 50% al término de la instalación."));
+            } else {
+                $this->Cell(60,10,utf8_decode("* 50% Al Momento de la instalación."));
+            }
+        } else {
+            $this->Cell(60,10,utf8_decode("* 50% Al Momento de la instalación."));
+        }
+        $this->Ln(10);
+        $this->Cell(60,10,'Formas de Pago:');
+        $this->Ln(5);
+        $cadena_buscada0 = 'P&M';
+        $cadena_buscada02 = 'Protecc';
+        $posicion_coincidencia0 = strpos($nombre_empresass, $cadena_buscada0);
+        $posicion_coincidencia02 = strpos(utf8_decode($nombre_empresass), $cadena_buscada02);
+        if ($posicion_coincidencia0 === false) {
+            if ($posicion_coincidencia02 === false) {
+                $this->Cell(60,10,utf8_decode("* Tarjeta de crédito, débito, efectivo o cheque al día."));
+                $this->Ln(10);
+            } else {
+                $this->Cell(60,10,utf8_decode("* Tarjeta de crédito, débito, transferencia."));
+                $this->Ln(6);
+                $this->MultiCell(190,22, $this->Image("webpay.png", $this->GetX()+1, $this->GetY()+1, 50));
+            }
+        } else {
+            $this->Cell(60,10,utf8_decode("* Tarjeta de crédito, débito, transferencia."));
+            $this->Ln(6);
+            $this->MultiCell(190,22, $this->Image("webpay.png", $this->GetX()+1, $this->GetY()+1, 50));
+        }
+        $this->Cell(60,10,utf8_decode("* Tiempo de instalación 10 a 15 días."));
+        $this->Ln(10);
+        $cadena_buscada = 'P&M';
+        $cadena_buscada2 = 'Protecc';
+        $posicion_coincidencia = strpos($nombre_empresass, $cadena_buscada);
+        $posicion_coincidencia2 = strpos(utf8_decode($nombre_empresass), $cadena_buscada2);
+        if ($posicion_coincidencia === false) {
+            if ($posicion_coincidencia2 === false) {
+                $this->Cell(60,10,utf8_decode("* Cotización Válida por 30 días.-"));
+            } else {
+                $this->Cell(60,10,utf8_decode("* Cotización Válida por 7 días.-"));
+            }
+        } else {
+            $this->Cell(60,10,utf8_decode("* Cotización Válida por 7 días.-"));
+        }
+        $this->Ln(10);
+        $this->Cell(54);
+        $this->Cell(60,10,utf8_decode("Sin otro particular y esperando una buena acogida.-"));
+        $this->Ln(4);
+        $this->Cell(75);
+        $this->Cell(60,10,utf8_decode("Le saluda atte. A Usted."));
+        $conexion_ext = new mysqli("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+        $consulta_ext = $conexion_ext->query("Call Buscar_EmpresaDetalle_Vendedora_Cotizacion('$id')");
+        $paginaweb = "";
+        $correo = "";
+        $telefono_ext = "";
+        $vendedora_ext = "";
+        while($row10 = $consulta_ext->fetch_assoc()){
+            $vendedora_ext = $row10["Vendedora"];
+            $telefono_ext = utf8_decode($row10["Telefono"]);
+            $correo = utf8_decode($row10["Correo"]);
+            $paginaweb = utf8_decode($row10["PaginaWeb"]);
+        }
+        $this->Ln(-4);
+        $this->Cell(136);
+        $this->SetFont('Arial','B',12);
+        $this->Cell(60,10,$vendedora_ext,0,0,'C');
+        $this->Ln(4);
+        $this->Cell(136);
+        $this->SetFont('Arial','',11);
+        $this->Cell(60,10,utf8_decode($telefono_ext),0,0,'C');
+        $this->Ln(4);
+        $this->Cell(135);
+        $this->SetFont('Arial','',11);
+        $this->Cell(60,10,utf8_decode($correo),0,0,'C');
+        $this->Ln(4);
+        $this->Cell(135);
+        $this->SetFont('Arial','',11);
+        $this->Cell(60,10,utf8_decode($paginaweb),0,0,'C');
+   }
+}
+
+$pdf=new PDF();
+$id = $_REQUEST["id"];
+$idc = $_REQUEST["idc"];
+$pdf->SetTitle(utf8_decode("Cotización ".$id." - Persiana"));
+//Títulos de las columnas
+//$header=array('Cant','Ancho','Alto','Accionamiento','Color','Valor Unid.','Total');
+$pdf->AliasNbPages();
+//Primera página
+$pdf->AddPage();
+$pdf->SetY(65);
+//$pdf->AddPage();
+$pdf->TablaSimple();
+//Segunda página
+$modo="I";
+$conexion_aparte = new mysqli("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+$conexion2_aparte = new mysqli("127.0.0.1","nicolas_usersoc","usersocifyd","nicolas_socifyd");
+mysqli_set_charset($conexion_aparte,"utf8");
+mysqli_set_charset($conexion2_aparte,"utf8");
+if(mysqli_connect_errno()){
+    echo mysqli_connect_error();
+}
+$consulta_aparte = $conexion_aparte->query("Call Buscar_Cliente_Cotizacion ('$idc')");
+$consulta2_aparte = $conexion2_aparte->query("Call Buscar_Empresa_Cotizacion ('$id')");
+$nombre_cliente = "";
+$empresa = "";
+if($row_aparte = $consulta_aparte->fetch_assoc()){
+    $nombre_cliente = utf8_decode($row_aparte["Nombre"]);
+}
+if($row_aparte2 = $consulta2_aparte->fetch_assoc()){
+    $empresa = $row_aparte2["Empresa"];
+}
+$consulta_aparte->close();
+$conexion_aparte->more_results();
+$consulta2_aparte->close();
+$conexion2_aparte->more_results();
+$pdf->Output($id." ".$nombre_cliente." - ".utf8_decode("Costo Cotización ")."(".utf8_decode($empresa).").pdf",$modo);
+?>

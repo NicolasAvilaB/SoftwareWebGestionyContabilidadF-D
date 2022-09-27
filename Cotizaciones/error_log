@@ -1,0 +1,149 @@
+[03-Nov-2021 15:19:48 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 924
+[03-Nov-2021 15:28:49 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 924
+[03-Nov-2021 15:32:28 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 924
+[03-Nov-2021 15:32:55 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 924
+[03-Nov-2021 16:53:02 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 980
+[04-Nov-2021 11:55:29 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 931
+[09-Nov-2021 17:53:05 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 945
+[10-Nov-2021 12:03:42 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 938
+[10-Nov-2021 12:04:21 America/Santiago] PHP Warning:  fopen(webpay.png): failed to open stream: No such file or directory in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 1257
+[10-Nov-2021 12:04:21 America/Santiago] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: webpay.png in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php:271
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(1259): FPDF->Error('Can't open imag...')
+#1 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(885): FPDF->_parsepng('webpay.png')
+#2 /home3/cso72566/public_html/Cotizaciones/generar_cotizacionpdf.php(469): FPDF->Image('webpay.png', 11.00125, 219, 50)
+#3 /home3/cso72566/public_html/Cotizaciones/generar_cotizacionpdf.php(539): PDF->TablaSimple()
+#4 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 271
+[10-Nov-2021 12:04:33 America/Santiago] PHP Warning:  fopen(webpay.png): failed to open stream: No such file or directory in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 1257
+[10-Nov-2021 12:04:33 America/Santiago] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: webpay.png in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php:271
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(1259): FPDF->Error('Can't open imag...')
+#1 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(885): FPDF->_parsepng('webpay.png')
+#2 /home3/cso72566/public_html/Cotizaciones/generar_cotizacionpdf.php(469): FPDF->Image('webpay.png', 11.00125, 169, 50)
+#3 /home3/cso72566/public_html/Cotizaciones/generar_cotizacionpdf.php(539): PDF->TablaSimple()
+#4 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 271
+[10-Nov-2021 12:04:35 America/Santiago] PHP Warning:  fopen(webpay.png): failed to open stream: No such file or directory in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 1257
+[10-Nov-2021 12:04:35 America/Santiago] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: webpay.png in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php:271
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(1259): FPDF->Error('Can't open imag...')
+#1 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(885): FPDF->_parsepng('webpay.png')
+#2 /home3/cso72566/public_html/Cotizaciones/generar_cotizacionpdf.php(469): FPDF->Image('webpay.png', 11.00125, 184, 50)
+#3 /home3/cso72566/public_html/Cotizaciones/generar_cotizacionpdf.php(539): PDF->TablaSimple()
+#4 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 271
+[10-Nov-2021 13:10:11 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 931
+[10-Nov-2021 15:51:17 America/Santiago] PHP Notice:  Undefined variable: vun in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 198
+[10-Nov-2021 15:51:17 America/Santiago] PHP Notice:  Undefined variable: vun in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 198
+[10-Nov-2021 15:51:17 America/Santiago] PHP Notice:  Undefined variable: vun in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 198
+[10-Nov-2021 15:51:18 America/Santiago] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php:271
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(1060): FPDF->Error('Some data has a...')
+#1 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php(573): FPDF->Output('I', '10560 Xavier Jo...')
+#3 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 271
+[10-Nov-2021 15:59:56 America/Santiago] PHP Notice:  Use of undefined constant Math - assumed 'Math' in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 185
+[10-Nov-2021 15:59:56 America/Santiago] PHP Notice:  Use of undefined constant Math - assumed 'Math' in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 186
+[10-Nov-2021 15:59:56 America/Santiago] PHP Notice:  Use of undefined constant Math - assumed 'Math' in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 185
+[10-Nov-2021 15:59:56 America/Santiago] PHP Notice:  Use of undefined constant Math - assumed 'Math' in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 186
+[10-Nov-2021 15:59:56 America/Santiago] PHP Notice:  Use of undefined constant Math - assumed 'Math' in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 185
+[10-Nov-2021 15:59:56 America/Santiago] PHP Notice:  Use of undefined constant Math - assumed 'Math' in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 186
+[10-Nov-2021 15:59:56 America/Santiago] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php:271
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(1060): FPDF->Error('Some data has a...')
+#1 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php(593): FPDF->Output('I', '10560 Xavier Jo...')
+#3 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 271
+[10-Nov-2021 16:57:49 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 202
+[10-Nov-2021 16:57:49 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 202
+[10-Nov-2021 16:57:49 America/Santiago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 202
+[10-Nov-2021 16:57:49 America/Santiago] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php:271
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(1060): FPDF->Error('Some data has a...')
+#1 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php(598): FPDF->Output('I', '10560 Xavier Jo...')
+#3 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 271
+[10-Nov-2021 16:59:39 America/Santiago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 201
+[11-Nov-2021 12:46:26 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 938
+[12-Nov-2021 10:52:26 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 924
+[12-Nov-2021 10:54:35 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 966
+[12-Nov-2021 11:02:00 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 945
+[12-Nov-2021 12:12:10 America/Santiago] PHP Notice:  Undefined variable: valor_inst4 in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 268
+[12-Nov-2021 12:12:10 America/Santiago] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php:271
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(1060): FPDF->Error('Some data has a...')
+#1 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php(622): FPDF->Output('I', '10962 Diego Fli...')
+#3 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 271
+[12-Nov-2021 12:20:44 America/Santiago] PHP Notice:  Undefined variable: cantidad_desc in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 461
+[12-Nov-2021 12:20:44 America/Santiago] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php:271
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(1060): FPDF->Error('Some data has a...')
+#1 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php(604): FPDF->Output('I', '10962 Diego Fli...')
+#3 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 271
+[12-Nov-2021 15:48:11 America/Santiago] PHP Notice:  Undefined variable: operacion in /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php on line 403
+[12-Nov-2021 15:48:11 America/Santiago] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php:271
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(1060): FPDF->Error('Some data has a...')
+#1 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(999): FPDF->_checkoutput()
+#2 /home3/cso72566/public_html/Cotizaciones/cgenerar_cotizacionpdf.php(634): FPDF->Output('I', '12026 Patricia ...')
+#3 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php on line 271
+[16-Nov-2021 10:58:40 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 994
+[17-Nov-2021 17:52:55 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 945
+[17-Nov-2021 17:54:51 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 966
+[18-Nov-2021 15:47:39 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 966
+[18-Nov-2021 15:49:09 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 917
+[19-Nov-2021 12:46:58 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 966
+[19-Nov-2021 17:26:35 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 966
+[19-Nov-2021 17:30:10 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 966
+[22-Nov-2021 10:57:47 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 966
+[22-Nov-2021 11:51:15 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 917
+[22-Nov-2021 12:06:17 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 917
+[22-Nov-2021 13:02:05 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 980
+[22-Nov-2021 18:51:41 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 987
+[25-Nov-2021 17:21:23 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 980
+[30-Nov-2021 17:00:57 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 1008
+[02-Dec-2021 13:34:28 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 931
+[07-Dec-2021 16:56:58 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 987
+[14-Dec-2021 11:40:00 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 917
+[15-Dec-2021 16:54:28 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 938
+[16-Dec-2021 09:30:14 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 987
+[17-Dec-2021 16:24:10 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 931
+[21-Dec-2021 16:51:29 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 987
+[21-Dec-2021 16:52:31 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 924
+[23-Dec-2021 16:15:32 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 931
+[23-Dec-2021 17:46:04 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 917
+[24-Dec-2021 12:19:53 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 924
+[24-Dec-2021 12:20:11 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 924
+[28-Dec-2021 16:44:55 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 987
+[28-Dec-2021 16:45:39 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 931
+[28-Dec-2021 16:47:32 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 950
+[30-Dec-2021 10:28:43 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 992
+[03-Jan-2022 20:09:39 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 936
+[04-Jan-2022 13:47:19 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 936
+[05-Jan-2022 15:00:32 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 992
+[05-Jan-2022 15:04:41 America/Santiago] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home3/cso72566/public_html/Cotizaciones/generar_cotizacion_otrospdf.php:25
+Stack trace:
+#0 /home3/cso72566/public_html/Cotizaciones/fpdf/fpdf.php(334): PDF->Header()
+#1 /home3/cso72566/public_html/Cotizaciones/generar_cotizacion_otrospdf.php(311): FPDF->AddPage()
+#2 {main}
+  thrown in /home3/cso72566/public_html/Cotizaciones/generar_cotizacion_otrospdf.php on line 25
+[05-Jan-2022 15:05:07 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 936
+[05-Jan-2022 15:25:25 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 964
+[10-Jan-2022 14:46:36 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 992
+[12-Jan-2022 13:39:18 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 992
+[13-Jan-2022 11:35:26 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 992
+[13-Jan-2022 11:36:18 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 992
+[13-Jan-2022 11:36:56 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 992
+[13-Jan-2022 11:37:55 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 992
+[13-Jan-2022 15:06:24 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 957
+[17-Jan-2022 14:51:18 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 992
+[10-Feb-2022 14:36:17 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Cotizaciones/cotizaciones.php on line 1022

@@ -1,0 +1,43 @@
+[29-Nov-2021 15:20:59 America/Santiago] PHP Notice:  Undefined variable: conexion9 in /home3/cso72566/public_html/Ganancias/buscar_filtracion_mes_ano_empresa.php on line 49
+[29-Nov-2021 15:20:59 America/Santiago] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home3/cso72566/public_html/Ganancias/buscar_filtracion_mes_ano_empresa.php:49
+Stack trace:
+#0 {main}
+  thrown in /home3/cso72566/public_html/Ganancias/buscar_filtracion_mes_ano_empresa.php on line 49
+[29-Nov-2021 22:32:03 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[30-Nov-2021 11:33:07 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[30-Nov-2021 11:55:32 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[30-Nov-2021 11:58:57 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[30-Nov-2021 16:59:52 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[30-Nov-2021 17:04:11 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[30-Nov-2021 17:09:10 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[30-Nov-2021 18:31:36 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 495
+[01-Dec-2021 12:17:02 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 453
+[01-Dec-2021 12:43:10 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[01-Dec-2021 13:07:00 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 495
+[01-Dec-2021 13:11:52 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 495
+[01-Dec-2021 13:32:26 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 537
+[02-Dec-2021 12:01:01 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[23-Dec-2021 16:16:06 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 544
+[28-Dec-2021 16:32:36 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 460
+[04-Jan-2022 16:06:36 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 495
+[04-Jan-2022 16:16:46 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[04-Jan-2022 16:59:22 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 537
+[04-Jan-2022 17:00:45 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[04-Jan-2022 17:01:43 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 544
+[04-Jan-2022 17:36:33 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 460
+[04-Jan-2022 17:59:22 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[04-Jan-2022 18:00:40 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[05-Jan-2022 14:40:15 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[05-Jan-2022 14:50:41 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 530
+[06-Jan-2022 12:10:54 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 467
+[06-Jan-2022 12:13:27 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[06-Jan-2022 12:18:12 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[06-Jan-2022 12:27:12 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[06-Jan-2022 12:30:10 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 516
+[06-Jan-2022 13:02:55 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[06-Jan-2022 13:09:59 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[06-Jan-2022 13:10:00 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[06-Jan-2022 13:10:00 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[06-Jan-2022 13:12:41 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[06-Jan-2022 13:14:15 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 523
+[06-Jan-2022 13:18:26 America/Santiago] PHP Notice:  A session had already been started - ignoring session_start() in /home3/cso72566/public_html/Ganancias/ganancias.php on line 467

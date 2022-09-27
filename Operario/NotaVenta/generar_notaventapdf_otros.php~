@@ -1,0 +1,192 @@
+<?php
+require('./fpdf/fpdf.php');
+$id = 0;
+class PDF extends FPDF
+{
+    
+//Cabecera de página
+   function Header()
+   {
+       if ($this->PageNo() == 1){
+            setlocale(LC_TIME,"es_ES");
+            $id = $_REQUEST["id"];
+            $idc = $_REQUEST["idc"];
+            $conexion = new mysqli("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+            $conexion2 = new mysqli("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+            mysqli_set_charset($conexion,"utf8");
+            if(mysqli_connect_errno()){
+                echo mysqli_connect_error();
+            }
+            $consulta = $conexion->query("select Nombre, Telefono, Email, Direccion, Comuna from Clientes where Id = '$idc'");
+        //Logo
+        //Arial bold 15
+            $this->SetFont('Arial','B',12);
+            //Movernos a la derecha
+            $this->Cell(150);
+            //Título
+            $inicio = date("Y-m-d");
+            $this->Cell(60,10,utf8_decode('Nota Venta '.$id));
+            $this->Ln(5);
+            $this->Cell(115);
+            $consulta2 = $conexion2->query("Call Buscar_NotaVenta_Fecha_Ingreso ('$id')");
+            if($row = $consulta2->fetch_assoc()){
+                $fecha_ingreso = utf8_decode($row["FechaIngreso"]);
+            }
+            $this->Cell(60,10,'Fecha: '.$fecha_ingreso.'');
+        //Salto de línea
+            $this->Ln(-5);
+            $se= utf8_decode("Señor (a): ");
+            $nombre = "";
+            $telefono = "";
+            $email = "";
+            $direccion = "";
+            $comuna = "";
+            while($row = $consulta->fetch_assoc()){
+                $nombre = utf8_decode($row["Nombre"]);
+                $telefono = utf8_decode($row["Telefono"]);
+                $email = utf8_decode($row["Email"]);
+                $direccion = utf8_decode($row["Direccion"]);
+                $comuna = utf8_decode($row["Comuna"]);
+            }
+            $consulta->close();
+            $conexion->more_results();
+            $this->Cell(60,10,$se.$nombre);
+            $this->Ln(5);
+            $this->Cell(60,10,'Fono: '.$telefono);
+            $this->Ln(5);
+            $this->Cell(60,10,'Email: '.$email);
+            $this->Ln(5);
+            $this->Cell(60,10,'Direccion: '.$direccion);
+            $this->Ln(5);
+            $this->Cell(60,10,'Comuna: '.$comuna);
+            $this->Ln(9);
+            $this->Cell(60,10,'Por la presente, me es muy grato hacerle llegar esta Nota Venta');
+       }
+   }
+   
+   //Pie de página
+   function Footer()
+   {
+        $this->SetY(-15);
+        $this->SetFont('Arial','I',8);
+        $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+   }
+   
+   function TablaSimple()
+   {    
+        $this->SetFont('Arial','I',10);
+        $this->Ln(-15);
+        $conexion2 = mysqli_connect("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+        $conexion3 = mysqli_connect("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+        mysqli_set_charset($conexion2,"utf8");
+        if(mysqli_connect_errno()){
+            echo mysqli_connect_error();
+        }
+        $id = $_REQUEST["id"];
+        $suma = 0;
+        $sumaca =0;
+        $sumaca2 =0;
+        $suma_subrep = 0;
+        $id_otros = "";
+        $consultaotros = mysqli_query($conexion2, "select IdOtros from DetalleOtros where IdTotalOtros = '$id'");
+        if($rowotro_re = mysqli_fetch_array($consultaotros)){
+            $id_otros = $rowotro_re[0];
+        }
+        //otros
+        $subconsulta_otros = mysqli_query($conexion2, "select Cantidad, IdOtros, ValorUnitario, ValorTotal from DetalleNotaVentaOtros where IdNotaVenta= '$id'");
+        if (mysqli_num_rows($subconsulta_otros) > 0){
+            $this->Cell(60,10,'Otros');
+            $this->Ln();
+            $this->Cell(13,7,'Cant',1);
+            $this->Cell(117,7,'Detalle',1);
+            $this->Cell(28,7,'Valor Unid.',1);
+            $this->Cell(28,7,'Total',1);
+            $this->Ln();
+        }
+        while($row_subotros = mysqli_fetch_array($subconsulta_otros)){
+            $cantidad = $row_subotros[0];
+            $rep = $row_subotros[1];
+            $nombre_repuesto = "";
+            $consulta000 = mysqli_query($conexion2, "select NombreOtros from Otros where Id = '$rep'");
+            if($row_repuesto = mysqli_fetch_array($consulta000)){
+                $nombre_repuesto = $row_repuesto[0];
+            }
+            $vun = $row_subotros[2];
+            $vt = $row_subotros[3];
+            $this->Cell(13,7,$cantidad,1);
+            $this->Cell(117,7,utf8_decode($nombre_repuesto),1);
+            $this->Cell(28,7,"$ ".number_format($vun, 0, ',', '.'),1);
+            $this->Cell(28,7,"$ ".number_format($vt, 0, ',', '.'),1);
+            $this->Ln();
+            $ganancia = intval($row_subotros[3]);
+		    $suma += $ganancia;
+		    $row_subotros++;
+        }
+        if (mysqli_num_rows($subconsulta_otros) > 0){
+            $this->Cell(130);
+            $this->Cell(28,7,"Subtotal: ",1);
+            $this->Cell(28,7,"$ ".number_format($suma, 0, ',', '.'),1);
+            $this->Ln();
+        }
+        
+        //Título
+        $subconsulta_totalcompleto = mysqli_query($conexion2, "Call Reporte_NotaVenta_Totales('$id')")or die (mysqli_error($conexion2));
+        if($fila_totalcompleto = mysqli_fetch_array($subconsulta_totalcompleto)){
+            $this->Ln();
+            $this->Cell(130);
+            $this->Cell(28,7,"Neto: ",1);
+            $this->Cell(28,7,"$ ".number_format($fila_totalcompleto[0], 0, ',', '.'),1);
+            $this->Ln();
+            $this->Cell(130);
+            $this->Cell(28,7,"Iva: ",1);
+            $this->Cell(28,7,"$ ".number_format($fila_totalcompleto[1], 0, ',', '.'),1);
+            $this->Ln();
+            $this->Cell(130);
+            $this->Cell(28,7,"Total Inicial: ",1);
+            $this->Cell(28,7,"$ ".number_format($fila_totalcompleto[2], 0, ',', '.'),1);
+            $this->Ln();
+            $this->Cell(130);
+            $this->Cell(28,7,"Desc. Adicional: ",1);
+            $this->Cell(28,7,"$ ".number_format($fila_totalcompleto[3], 0, ',', '.'),1);
+            $this->Ln();
+            $subconsulta_descb2 = mysqli_query($conexion3, "select Valor from Historial_Descuento_B_NotaVenta where IdNotaVenta = '$id'");
+            if (mysqli_num_rows($subconsulta_descb2) > 0){
+                $this->Cell(130);
+                $this->Cell(28,7,"Desc B: ",1);
+                if($row_subdescb2 = mysqli_fetch_array($subconsulta_descb2)){
+                    $cantidad_desc2 = $row_subdescb2[0];
+                    $this->Cell(28,7,"$ ".number_format($cantidad_desc2, 0, ',', '.'),1);
+                }
+                $this->Ln();
+            }
+            $this->Cell(130);
+            $this->Cell(28,7,"Total: ",1);
+            $this->Cell(28,7,"$ ".number_format(intval($fila_totalcompleto[4]) - intval($cantidad_desc2), 0, ',', '.'),1);
+        }
+        $this->Ln(5);
+        $this->Cell(60,10,'Condiciones de Pago:');
+        $this->Ln(5);
+        $this->Cell(60,10,'* 50% inicial firma nota de venta, Saldo dia de termino de la instalacion.');
+        $this->Ln(5);
+        $this->Cell(60,10,'* Medios de pago: efectivo, transferencia, cheque, tarjeta de credito.');
+        $this->Ln(5);
+        $this->Cell(60,10,'* Tiempo de entrega 15 dias habiles.');
+        $consulta2->close();
+        $conexion2->more_results();
+   }
+   
+}
+
+$pdf=new PDF();
+$pdf->SetTitle(utf8_decode('Nota Venta'));
+//Títulos de las columnas
+//$header=array('Cant','Ancho','Alto','Accionamiento','Color','Valor Unid.','Total');
+$pdf->AliasNbPages();
+//Primera página
+$pdf->AddPage();
+$pdf->SetY(65);
+//$pdf->AddPage();
+$pdf->TablaSimple();
+//Segunda página
+$pdf->Output();
+?>

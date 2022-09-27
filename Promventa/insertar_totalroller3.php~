@@ -1,0 +1,17 @@
+<?php
+header("Content-Type: text/html;charset=utf-8");
+$conexion = mysqli_connect("localhost","cso72566_usersocifyd","usersocifyd","cso72566_socifyd");
+mysqli_set_charset($conexion,"utf8");
+if(!$conexion){
+    echo "No se ha podido conectar" . mysqli_error();
+    exit();
+}
+$mes = $_POST["mes"];
+$ano = $_POST["ano"];
+$empresa = $_POST["empresa"];
+$consulta = mysqli_query($conexion,"Call Prom_Venta3_Roller ('$mes','$ano','$empresa')");
+if(!$consulta){
+    echo "Error al insertar los datos ". mysqli_error();
+}else{
+}
+?>
