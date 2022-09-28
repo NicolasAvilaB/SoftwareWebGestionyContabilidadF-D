@@ -9,9 +9,9 @@ Sección Admin:
 - Clave: universo_estelar*
 
 Sección Vendedora:
-Usuario: ventas@comercialpym.cl
-Clave 123
+- Usuario: ventas@comercialpym.cl
+- Clave 123
 
 Sección Técnico (Responsive):
-Usuario: Jose Aguayo
-Clave: Jose Aguayo
+- Usuario: Jose Aguayo
+- Clave: Jose Aguayo
