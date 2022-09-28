@@ -2,4 +2,4 @@
 
 Sistema de Ventas de Persianas y Gestión Contable:
 
-Sistema web implementado en https://nalo.cf
+Sistema web implementado en http://nalo.cf
