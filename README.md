@@ -10,12 +10,11 @@ Sección Admin:
 
 Sección Vendedora:
 - Usuario: ventas@comercialpym.cl
-- Clave 123
+- Clave: 123
 
 Sección Técnico (Responsive):
 - Usuario: Jose Aguayo
 - Clave: Jose Aguayo
-
 
 ## Secciones y Funcionalidades Principales.
 - Uso de AJAX.
