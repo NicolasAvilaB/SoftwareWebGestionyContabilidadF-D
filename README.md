@@ -31,7 +31,8 @@ Sección Técnico (Responsive):
 - Gestión de instaladores, rectificadores según nota venta y asignado a un calendario.
 - Pago de mensualidad a cada técnico + Promedio de Ganancia y Promedio de Ventas.
 - Registro de Facturación y Nota de Crédito.
-- Gastos Empresa + Ingreso y Egreso de Inventario (Persianas) 
+- Gastos Empresa + Ingreso y Egreso de Inventario (Persianas).
+- Registro Medidas de Rectificación.
 
 ## Detalle Base de Datos.
 MySQL - nicolas_socifyd
