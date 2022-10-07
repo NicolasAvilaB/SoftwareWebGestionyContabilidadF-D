@@ -1,47 +1,5 @@
 # Software Web Gestion y Contabilidad F&D
 
-<style>
-.gallery{
-	
-}
-
-.gallery__picture{
-	min-width:200px;
-	flex:350px;
-	height:300px;
-}
-
-.gallery__img{
-	width:100%;
-	height: 100%;
-	object-fit:cover;
-}
-
-
-
-</style>
-
-<section class="gallery" style="width:90%; margin: 0 auto; overflow:hidden; display:flex; gap:20px; flex-wrap:wrap;">
-	<article class="gallery__picture">
-		<img src="https://systemchile.com/nicolas/inicio.PNG" class="gallery__img"/>
-	</article>
-	<article class="gallery__picture">
-		<img src="" class="gallery__img"/>
-	</article>
-	<article class="gallery__picture">
-		<img src="" class="gallery__img"/>
-	</article>
-	<article class="gallery__picture">
-		<img src="" class="gallery__img"/>
-	</article>
-	<article class="gallery__picture">
-		<img src="" class="gallery__img"/>
-	</article>
-	<article class="gallery__picture">
-		<img src="" class="gallery__img"/>
-	</article>
-</section>
-
 Sistema de Ventas de Persianas y Gestión Contable creado en PHP 7.4, uso de EcmaScript6, PWA, plugins fullcalendar:
 
 Sistema web en http://nalo.cf
@@ -75,4 +33,4 @@ Sección Técnico (Responsive):
 - Registro de Facturación y Nota de Crédito.
 - Gastos Empresa + Ingreso y Egreso de Inventario (Persianas) 
 
-
+## 
