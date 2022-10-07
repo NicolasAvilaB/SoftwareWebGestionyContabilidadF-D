@@ -30,7 +30,7 @@
 	</article>
 	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
-	</article>a
+	</article>
 	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
 	</article>
