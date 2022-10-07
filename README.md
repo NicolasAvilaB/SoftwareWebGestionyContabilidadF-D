@@ -1,24 +1,48 @@
 # Software Web Gestion y Contabilidad F&D
 
-<style></style>
+<style>
+.gallery{
+	width:90%;
+	margin: 0 auto;
+	overflow: hidden;
+	display:flex;
+	gap:20px;
+	flex-wrap:wrap;
+}
+
+.gallery__picture{
+	min-width:200px;
+	flex:350px;
+	height:300px;
+}
+
+.gallery__img{
+	width:100%;
+	height: 100%;
+	object-fit:cover;
+}
+
+
+
+</style>
 
 <section class="gallery">
-	<article class="galley__picture">
+	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
 	</article>
-	<article class="galley__picture">
+	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
 	</article>
-	<article class="galley__picture">
+	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
 	</article>a
-	<article class="galley__picture">
+	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
 	</article>
-	<article class="galley__picture">
+	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
 	</article>
-	<article class="galley__picture">
+	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
 	</article>
 </section>
