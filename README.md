@@ -2,6 +2,27 @@
 
 <style></style>
 
+<section class="gallery">
+	<article class="galley__picture">
+		<img src="" class="gallery__img"/>
+	</article>
+	<article class="galley__picture">
+		<img src="" class="gallery__img"/>
+	</article>
+	<article class="galley__picture">
+		<img src="" class="gallery__img"/>
+	</article>a
+	<article class="galley__picture">
+		<img src="" class="gallery__img"/>
+	</article>
+	<article class="galley__picture">
+		<img src="" class="gallery__img"/>
+	</article>
+	<article class="galley__picture">
+		<img src="" class="gallery__img"/>
+	</article>
+</section>
+
 Sistema de Ventas de Persianas y Gestión Contable creado en PHP 7.4, uso de EcmaScript6, PWA, plugins fullcalendar:
 
 Sistema web en http://nalo.cf
