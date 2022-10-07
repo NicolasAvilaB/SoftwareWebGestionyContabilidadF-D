@@ -33,4 +33,7 @@ Sección Técnico (Responsive):
 - Registro de Facturación y Nota de Crédito.
 - Gastos Empresa + Ingreso y Egreso de Inventario (Persianas) 
 
-## 
+## Detalle Base de Datos.
+MySQL - nicolas_socifyd
+- Usuario: nicolas_usersoc
+- Clave: usersocifyd
