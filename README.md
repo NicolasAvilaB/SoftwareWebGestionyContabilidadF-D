@@ -32,3 +32,5 @@ Sección Técnico (Responsive):
 - Pago de mensualidad a cada técnico + Promedio de Ganancia y Promedio de Ventas.
 - Registro de Facturación y Nota de Crédito.
 - Gastos Empresa + Ingreso y Egreso de Inventario (Persianas) 
+
+![nalocf](https://user-images.githubusercontent.com/36216299/194539754-f5861d79-9374-4926-b163-5a3276a98308.PNG)
