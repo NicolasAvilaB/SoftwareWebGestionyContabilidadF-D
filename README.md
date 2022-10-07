@@ -4,6 +4,25 @@ Sistema de Ventas de Persianas y Gestión Contable creado en PHP 7.4, uso de Ecm
 
 Sistema web en http://nalo.cf
 
+<table border="0">
+  <tr>
+    <td>
+      <p align="center">
+        <i>Playback audio devices</i>
+        <br>
+        <img src="https://user-images.githubusercontent.com/1631752/125156531-419c9400-e13c-11eb-91df-91ca3dafc386.png">
+      </p>
+    </td>
+    <td>
+      <p align="center">
+        <i>Capture audio devices</i>
+        <br>
+        <img src="https://user-images.githubusercontent.com/1631752/125156637-e15a2200-e13c-11eb-8ce3-8e42b57c28d5.png">
+      </p>
+    </td>
+  </tr>
+</table>
+
 ### Sección Admin:
 - Usuario: Root
 - Clave: universo_estelar*
@@ -38,23 +57,3 @@ Sistema web en http://nalo.cf
 MySQL - nicolas_socifyd
 - Usuario: nicolas_usersoc
 - Clave: usersocifyd
-
-
-<table border="0">
-  <tr>
-    <td>
-      <p align="center">
-        <i>Playback audio devices</i>
-        <br>
-        <img src="https://user-images.githubusercontent.com/1631752/125156531-419c9400-e13c-11eb-91df-91ca3dafc386.png">
-      </p>
-    </td>
-    <td>
-      <p align="center">
-        <i>Capture audio devices</i>
-        <br>
-        <img src="https://user-images.githubusercontent.com/1631752/125156637-e15a2200-e13c-11eb-8ce3-8e42b57c28d5.png">
-      </p>
-    </td>
-  </tr>
-</table>
