@@ -4,15 +4,15 @@ Sistema de Ventas de Persianas y Gestión Contable creado en PHP 7.4, uso de Ecm
 
 Sistema web en http://nalo.cf
 
-Sección Admin:
+### Sección Admin:
 - Usuario: Root
 - Clave: universo_estelar*
 
-Sección Vendedora:
+### Sección Vendedora:
 - Usuario: ventas@comercialpym.cl
 - Clave: 123
 
-Sección Técnico (Responsive):
+### Sección Técnico (Responsive):
 - Usuario: Jose Aguayo
 - Clave: Jose Aguayo
 
