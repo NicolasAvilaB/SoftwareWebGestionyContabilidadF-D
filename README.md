@@ -23,7 +23,7 @@
 
 <section class="gallery" style="width:90%; margin: 0 auto; overflow:hidden; display:flex; gap:20px; flex-wrap:wrap;">
 	<article class="gallery__picture">
-		<img src="" class="gallery__img"/>
+		<img src="https://systemchile.com/nicolas/inicio.PNG" class="gallery__img"/>
 	</article>
 	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
