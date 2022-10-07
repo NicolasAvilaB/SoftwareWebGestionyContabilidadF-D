@@ -9,7 +9,7 @@ Sistema web en http://nalo.cf
     <td>
       <p align="center">
         <i>Playback audio devices</i>
-        <img src="[https://user-images.githubusercontent.com/1631752/125156531-419c9400-e13c-11eb-91df-91ca3dafc386.png](https://user-images.githubusercontent.com/36216299/194626442-a9afa32e-9058-4080-920b-ffda2749f485.PNG)">
+        <img src="https://user-images.githubusercontent.com/36216299/194626442-a9afa32e-9058-4080-920b-ffda2749f485.PNG">
       </p>
     </td>
     <td>
