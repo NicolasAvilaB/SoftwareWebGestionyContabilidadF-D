@@ -1,5 +1,7 @@
 # Software Web Gestion y Contabilidad F&D
 
+<iframe style="height:10px;">![nalocf](https://user-images.githubusercontent.com/36216299/194539754-f5861d79-9374-4926-b163-5a3276a98308.PNG)</iframe>
+
 Sistema de Ventas de Persianas y Gestión Contable creado en PHP 7.4, uso de EcmaScript6, PWA, plugins fullcalendar:
 
 Sistema web en http://nalo.cf
@@ -33,4 +35,4 @@ Sección Técnico (Responsive):
 - Registro de Facturación y Nota de Crédito.
 - Gastos Empresa + Ingreso y Egreso de Inventario (Persianas) 
 
-![nalocf](https://user-images.githubusercontent.com/36216299/194539754-f5861d79-9374-4926-b163-5a3276a98308.PNG)
+
