@@ -2,12 +2,7 @@
 
 <style>
 .gallery{
-	width:90%;
-	margin: 0 auto;
-	overflow: hidden;
-	display:flex;
-	gap:20px;
-	flex-wrap:wrap;
+	
 }
 
 .gallery__picture{
@@ -26,7 +21,7 @@
 
 </style>
 
-<section class="gallery">
+<section class="gallery" style="width:90%; margin: 0 auto; overflow:hidden; display:flex; gap:20px; flex-wrap:wrap;">
 	<article class="gallery__picture">
 		<img src="" class="gallery__img"/>
 	</article>
