@@ -1,5 +1,7 @@
 # Software Web Gestion y Contabilidad F&D
 
+<style></style>
+
 Sistema de Ventas de Persianas y Gestión Contable creado en PHP 7.4, uso de EcmaScript6, PWA, plugins fullcalendar:
 
 Sistema web en http://nalo.cf
